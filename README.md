@@ -21,7 +21,8 @@
 
   
   
-  ***为保存图片，在/source目录下，新建目录img***
-  ···
-  ![Alt text](/img/bmw.jpg "宝马")
-  ···
+  ***为保存图片，在/source目录下，新建目录img ***  
+  ***引用方法如下 img ***
+  ···  
+  ![Alt text](/img/bmw.jpg "宝马")  
+  ···  
