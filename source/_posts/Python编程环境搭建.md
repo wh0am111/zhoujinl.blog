@@ -30,6 +30,8 @@ yum groupinstall 。必选操作，编译python需要编译工具。还有一些
 [root@jinqiuPython-2.7.6]$ sudo ./configure --prefix=/usr/local
 [root@jinqiuPython-2.7.6]$ sudo make && sudo make altinstall
 ```
+<!-- more -->
+
 创建软链接到2.7版本的python
 修改yum文件，由于yum只支持2.6版本的python，因此需要将/usr/bin/yum中的默认python解释器修改为2.6版本。
 ```

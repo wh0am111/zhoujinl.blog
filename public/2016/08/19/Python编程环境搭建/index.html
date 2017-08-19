@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://zhoujinl.github.io/2016/08/19/Python编程环境搭建/index.html">
 <meta property="og:site_name" content="Jalon的博客">
 <meta property="og:description" content="简介假如新建了一台CentOs虚拟机，作为纯净的操作系统，我们需要搭建基本的开发环境。CentOs6.x一般都是java1.5版本，python2.6，并且很多开发工具都是没有默认安装的，比如gcc。下面重点介绍Python环境的搭建，主要涉及Python升级，pip安装，virtualenv安装。 yumyum 源更新，可选操作，可替换国内的yum源。yum groupinstall 。必选操作">
-<meta property="og:updated_time" content="2017-08-19T14:46:22.880Z">
+<meta property="og:updated_time" content="2017-08-19T16:57:50.115Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python编程环境搭建">
 <meta name="twitter:description" content="简介假如新建了一台CentOs虚拟机，作为纯净的操作系统，我们需要搭建基本的开发环境。CentOs6.x一般都是java1.5版本，python2.6，并且很多开发工具都是没有默认安装的，比如gcc。下面重点介绍Python环境的搭建，主要涉及Python升级，pip安装，virtualenv安装。 yumyum 源更新，可选操作，可替换国内的yum源。yum groupinstall 。必选操作">
@@ -178,6 +178,7 @@
 <h1 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h1><p>yum 源更新，可选操作，可替换国内的yum源。<br>yum groupinstall 。必选操作，编译python需要编译工具。还有一些必要的库文件需要安装，例如openssl,zlib,这些都需要额外安装。pip要安装python2.7版本，因此需要zlib需要更新到最新版本1.2.8，而CentOs默认是1.2.3。否则会报错，错误信息后面提示。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@jinqiu opt]# yum -y update</div><div class="line">[root@jinqiu opt]# yum groupinstall &quot;Development tools&quot;</div><div class="line">[root@jinqiu opt]# yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel</div></pre></td></tr></table></figure></p>
 <p>顺便简单提下，快速免验证安装jdk<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1. wget --no-check-certificate --no-cookies --header &quot;Cookie: oraclelicense=accept-securebackup-cookie&quot; http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.rpm  </div><div class="line">2. rpm -ivh jdk-8u131-linux-x64.rpm</div></pre></td></tr></table></figure></p>
 <h1 id="python"><a href="#python" class="headerlink" title="python"></a>python</h1><p>保存2.6版本的python<br>下载2.7版本的python源码文件，解压，然后配置，编译，安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[root@jinqiu~]$ cd /opt</div><div class="line">[root@jinqiuopt]$ sudo wget --no-check-certificate https://www.python.org/ftp/python/2.7.6/Python-2.7.6.tar.xz</div><div class="line">[root@jinqiuopt]$ sudo tar xf Python-2.7.6.tar.xz </div><div class="line">[root@jinqiuopt]$ cd Python-2.7.6</div><div class="line">[root@jinqiuPython-2.7.6]$ sudo ./configure --prefix=/usr/local</div><div class="line">[root@jinqiuPython-2.7.6]$ sudo make &amp;&amp; sudo make altinstall</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>创建软链接到2.7版本的python<br>修改yum文件，由于yum只支持2.6版本的python，因此需要将/usr/bin/yum中的默认python解释器修改为2.6版本。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@jinqiu opt]# mv /usr/bin/python /usr/bin/python2.6</div><div class="line">[root@jinqiu opt]# ln -s /usr/bin/python2.7  /usr/bin/python</div></pre></td></tr></table></figure></p>
 <p>从一开始，如果要做一些实际Python开发，你一定会用到一些第三方包。<br>在Linux系统上至少有3种安装第三方包的方法。</p>
 <ul>
@@ -392,7 +393,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Google</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -400,7 +401,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color2">Google</a>
               </li>
             
             <div class="clearfix"></div>
@@ -463,7 +464,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">无情岁月增中减&lt;br&gt;&lt;br&gt;有味诗书淡后甜</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">北冥有鱼，其名为鲲，鲲之大，不知其几千里也。化而为鸟，其名而鹏，鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。</div>
   	  	
     	</section>
     

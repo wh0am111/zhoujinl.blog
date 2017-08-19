@@ -24,6 +24,8 @@ Axure RP Extension for Chrome ： Axure RP 浏览器插件
 # 我喜欢的主题
 >炭黑+銀色金屬
 
+<!-- more -->
+
 # APPs
 >Postman：http测试工具  
 TypeClub：打字练习
