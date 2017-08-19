@@ -19,10 +19,8 @@
   **此步骤需先安装 deployer-git  `npm install hexo-deployer-git --save`  **
 
 
-  
-  
-  ***为保存图片，在/source目录下，新建目录img ***  
-  ***引用方法如下 img ***
-  ···  
-  ![Alt text](/img/bmw.jpg "宝马")  
-  ···  
+***为保存图片，在/source目录下，新建目录img***  
+***引用方法如下***  
+```  
+![Alt text](/img/bmw.jpg "宝马")  
+```
