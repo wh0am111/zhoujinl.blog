@@ -13,7 +13,7 @@
   执行命令：`hexo generate`
   
 2. 运行服务  
-  执行命令：  `hexo server`  打开命令行提示的地址，一般是http://0.0.0.0:4000/
+  执行命令：  `hexo server`  打开命令行提示的地址，一般是http://localhost:4000/
 3. 部署到github
   执行命令：  `hexo deploy`  
   **此步骤需先安装 deployer-git  `npm install hexo-deployer-git --save`  **
