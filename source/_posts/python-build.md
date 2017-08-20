@@ -2,6 +2,7 @@
 title: Python编程环境搭建
 date: 2016-08-19 22:13:30
 tags: Python
+categories: 技术
 ---
 
 # 简介  #
