@@ -160,6 +160,294 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-zookeeper-monitor" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/20/zookeeper-monitor/">Zookeeper 监控</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/20/zookeeper-monitor/" class="archive-article-date">
+  	<time datetime="2017-08-20T12:07:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。</p>
+<h1 id="Zookeeper-命令行监控方法"><a href="#Zookeeper-命令行监控方法" class="headerlink" title="Zookeeper 命令行监控方法"></a>Zookeeper 命令行监控方法</h1><p><a href="http://zookeeper.apache.org/doc/r3.4.6/zookeeperAdmin.html#sc_zkCommands" title="zookeeper 4字节命令监控" target="_blank" rel="external">zookeeper monitor</a></p>
+<p>常见四字命令：</p>
+<ul>
+<li><code>echo stat|nc 127.0.0.1 2181</code>来查看哪个节点被选择作为follower或者leader</li>
+<li><code>echo ruok|nc 127.0.0.1 2181</code>测试是否启动了该Server，若回复imok表示已经启动。</li>
+<li><code>echo cons | nc 127.0.0.1 2181</code>列出所有连接到服务器的客户端的完全的连接/会话的详情。</li>
+<li><code>echo wchs | nc 127.0.0.1 2181</code>列出服务器 watch 的详细信息。</li>
+</ul>
+        
+          <a class="article-more-a" href="/2017/08/20/zookeeper-monitor/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Monitor</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Zookeeper</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/20/zookeeper-monitor/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-elasticsearch-monitor" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/17/elasticsearch-monitor/">Elasticsearch 监控</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/17/elasticsearch-monitor/" class="archive-article-date">
+  	<time datetime="2017-08-17T12:30:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。</p>
+<h1 id="Elasticsearch集群状态监控"><a href="#Elasticsearch集群状态监控" class="headerlink" title="Elasticsearch集群状态监控"></a>Elasticsearch集群状态监控</h1><p>集群状态<br><code>curl -XGET http://192.168.17.201:9200/_cluster/health?pretty 2&gt;/dev/null|grep &quot;status&quot;|awk -F: &#39;{print $2}&#39;|awk -F \&quot; &#39;{print $2}&#39;</code></p>
+        
+          <a class="article-more-a" href="/2017/08/17/elasticsearch-monitor/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Elasticsearch</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Monitor</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/17/elasticsearch-monitor/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-lamp-build" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/20/lamp-build/">LAMP站点搭建过程分析</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/20/lamp-build/" class="archive-article-date">
+  	<time datetime="2017-03-20T11:34:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>LAMP 即 LINUX + APACHE + MYSQL +PHP 搭建网站的四大组件。下面详细介绍其普通的安装方法和配置。</p>
+<h1 id="LINUX"><a href="#LINUX" class="headerlink" title="LINUX"></a>LINUX</h1><p>咳，操作系统安装，可以使用VirtualBox创建虚拟机即可。这个就不细说了。推荐使用Centos6+</p>
+<h1 id="Apache-httpd"><a href="#Apache-httpd" class="headerlink" title="Apache httpd"></a>Apache httpd</h1><ol>
+<li>安装<br><code>yum install httpd</code></li>
+<li>配置<br>查找出Httpd相关配置文件 <code>rpm -ql httpd|grep &#39;/etc&#39;</code><br>根据上述命令，查询主要的配置文件有/etc/httpd/conf/httpd.conf。 logs是日志链接目录。modules是支持的模块库目录。run是进程pid文件。</li>
+<li>可执行文件<blockquote>
+<p>/usr/sbin/apachectl  #这个就是 Apache 的主要执行档，这个执行档其实是 shell script 而已， 他可以主动的侦测系统上面的一些设定值，好让你启动 Apache 时更简单！<br>/usr/sbin/httpd     #这个才是主要的 Apache 二进制执行文件啦！<br>/usr/bin/htpasswd   #(Apache 密码保护) 在某些网页当你想要登入时你需要输入账号与密码对吧！那 Apache 本身就提供一个最基本的密码保护方式， 该密码的产生就是透过这个指令来达成的！相关的设定方式我们会在 WWW 进阶设定当中说明的。</p>
+</blockquote>
+</li>
+<li>网页数据<br>/var/www 目录下，html是放置网页内容的目录，error是错误信息的内容，icons是自带的一些图标目录，cgi-bin是默认网页可执行程序放置的地方。</li>
+</ol>
+        
+          <a class="article-more-a" href="/2017/03/20/lamp-build/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LAMP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/20/lamp-build/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-more-joel-on-software" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -167,13 +455,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/20/more-joel-on-software/">软件随想录-卷2</a>
+      <a class="article-title" href="/2017/02/20/more-joel-on-software/">软件随想录-卷2</a>
     </h1>
   
 
         
-        <a href="/2017/06/20/more-joel-on-software/" class="archive-article-date">
-  	<time datetime="2017-06-20T09:36:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-20</time>
+        <a href="/2017/02/20/more-joel-on-software/" class="archive-article-date">
+  	<time datetime="2017-02-20T09:36:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-20</time>
 </a>
         
       </header>
@@ -186,7 +474,7 @@
 </blockquote>
 <h1 id="写给程序员的建议"><a href="#写给程序员的建议" class="headerlink" title="写给程序员的建议"></a>写给程序员的建议</h1><p>任何时刻不要想着推倒重来，重构而不是重新做一遍<br>不添加任何新功能<br>无论任何时刻向源码库添加代码，都要保证程序能够正常运行<br>所要做的只是一些合乎逻辑的变换，几乎都是机械性的，而且能够立刻确定不会改变代码行为<br>并不是每个人都适合当程序员</p>
         
-          <a class="article-more-a" href="/2017/06/20/more-joel-on-software/#more">more >></a>
+          <a class="article-more-a" href="/2017/02/20/more-joel-on-software/#more">more >></a>
         
       
 
@@ -210,7 +498,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/20/more-joel-on-software/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/02/20/more-joel-on-software/">展开全文 >></a>
         </p>
       
 
@@ -355,28 +643,9 @@
 <li>面试游击指南<br>面试官有时候会故意刁难你，看你能否坚持自己的正确的观点。好的面试者会坚持自己的观点，然后试图说服面试官。</li>
 <li>重金激励害多利少<br>原因是绩效考核的不正确，负面评价对士气伤害很大，而正面评价对士气的激励也不如想象的那么好(会让他们觉得自己是为了拿到好成绩才好好工作的，就像巴普洛夫的狗)。<br>大多数人都认为自己把事情做得很好(即使不是)。评价机制的不合理：比如某人是团队的粘合剂，总是能够在士气低落的时候激励大家，某人总喜欢研究新技术，别人有问题总要靠他解决，但是他写的代码量很少，这两种人可能得到的评价很低，但是不可否认他们的作用很大。<br>绩效考评会使团队产生间隙。</li>
 </ul>
-<h1 id="冰山理论"><a href="#冰山理论" class="headerlink" title="冰山理论"></a>冰山理论</h1><p>程序员和非技术人员的思考语言不一样。客户不知道他们要什么，别再期望客户知道他们要什么。原型图上漂亮的接口只占10%的工作，而真正的90%的程序设计都是看不到的。</p>
-<blockquote>
-<p>推论1：把使用接口的画面展示给非程序人员看时，如果这个接口很不好，对方会以为你整个程序也是很不好的。<br>推论2：相反，如果这个接口很漂亮，对方会以为这个程序几乎已经完工。<br>推论3：展示时唯一重要的就是外观。一定要让它美得冒泡<br>推论4：<strong>当公司规定不会编程的管理人员或客户要对项目”签字验收”的时候,提供多个版本的图形设计方案，供他们选择。微调页面的排版方式、视觉样式、字体等，把产品标识<br>改大或改小一点，给他们一些决定无关痛痒事情的权力,让他们觉得自己的意见举足轻重。</strong><br>推论5：做产品演示的时候，唯一起作用的就是产品截图，一定要让截图100%完美。</p>
-</blockquote>
-<p>如何绕过冰山：任何在幻灯片展示的产品都只是<em>一堆像素</em>而已。如果可以的话，在demo的用户界面中，把那些为完成的部分画成未完成的燕子。比如在工具栏图标<br>对应的功能完成之前，把它画成潦草的手绘风格。在构建网络服务的时候，可以先不把为完成的功能展示在网站首页。这样随着开发的进展，人们就能看到首页的<br>功能按键从3项逐渐增加到20项。<strong>更重要的是</strong>，要掌控人们对于开发进度的预期。用Excel文件的形式提供一份详细的开发进度规划表。</p>
-<h1 id="漏洞抽象定律"><a href="#漏洞抽象定律" class="headerlink" title="漏洞抽象定律"></a>漏洞抽象定律</h1><blockquote>
-<p>可靠的tcp建立在不可靠的ip协议之上。<br>所有重大的抽象机制在某种程序上都是有漏洞的，所以我们有一天遇到了这些漏洞，不得不去学习它的底层实现。<br>比如二维数组的访问(内存分页)，sql语句查询的快慢(逻辑上等义的sql语句查询起来速度完全不一样)，c++的字符串处理。</p>
-</blockquote>
-<h1 id="凡事没有看上去那么简单"><a href="#凡事没有看上去那么简单" class="headerlink" title="凡事没有看上去那么简单"></a>凡事没有看上去那么简单</h1><p>凡事没有看上去那么简单、尽量降低风险 =&gt; 先做好设计，再去实现</p>
-<h1 id="普通程序员如何改善团队工作方式"><a href="#普通程序员如何改善团队工作方式" class="headerlink" title="普通程序员如何改善团队工作方式"></a>普通程序员如何改善团队工作方式</h1><ul>
-<li>放手去做</li>
-<li>借助病毒营销的方式</li>
-<li>营造以防优秀的小天地</li>
-<li>干掉害群之马</li>
-<li>屏蔽干扰 </li>
-<li>提升自身对团队的价值</li>
-</ul>
-<h1 id="企业发展战略"><a href="#企业发展战略" class="headerlink" title="企业发展战略"></a>企业发展战略</h1><p>关于创业的想法,需要时请再重点阅读，分清楚两种不同的公司发展道路。</p>
-<blockquote>
-<p>亚马逊和本杰瑞<br>先有鸡还是先有蛋<br>让我回到过去<br>膨件和二八法则<br>开源软件经济学</p>
-</blockquote>
-
+        
+          <a class="article-more-a" href="/2016/06/21/joel-on-software-1-2/#more">more >></a>
+        
       
 
       
@@ -619,6 +888,106 @@
 
 
   
+    <article id="post-git-github" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/20/git-github/">Git/Github</a>
+    </h1>
+  
+
+        
+        <a href="/2015/05/20/git-github/" class="archive-article-date">
+  	<time datetime="2015-05-20T12:07:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><ul>
+<li>win7+<br>在wind7下搭建git环境。需下载windows 版本的git工具。见附件。选择完整安装。安装目录 D:\Program Files (x86)\Git\<br>并将该路径添加至PATH环境。之后在cmd 环境下就可以使用了。后续如何使用git 就参考git 使用手册了，跟linux环境下的使用方法类似。<br>在windows 下生成id_rsa ，免密码连接github。使用 进入D:\Program Files (x86)\Git\git-bash.exe 命令，进入控制台窗口后，输入<br><code>ssh-keygen -t rsa -b 4096 -C &quot;zhoujinl@126.com&quot;</code><br>然后一直按回车默认，直至完成。<br>最后可以在C:\Users\zhoujl.ssh 目录下生成ssh 密钥和公钥。<br>然后到.ssh目录中，将生成的id_rsa.pub里面的内容，复制到github网站中的 SSH KEYs 设置中。<br>git 全局设置<blockquote>
+<p>git config –global user.name zhoujinl<br>git config –global user.email zhoujinl@126.com  </p>
+</blockquote>
+</li>
+</ul>
+<p>在公司内部，有时需要通过设置代理才能连接上外网。<br>设置代理<br><code>git config --global http.proxy http://user:pwd@server.com:port</code><br>取消代理<br><code>git config --global (or --system or --local)  --unset  http.proxy</code></p>
+<ul>
+<li>Unix<br>这里主要介绍linux版本。其余的类linux应该类似。以CentOs环境为例，通过yum命令即可快速安装。<br><code>yum install git</code></li>
+</ul>
+        
+          <a class="article-more-a" href="/2015/05/20/git-github/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">GitHub</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/05/20/git-github/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-be-yourself" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -700,77 +1069,10 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/06/15/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2013/06/15/hello-world/" class="archive-article-date">
-  	<time datetime="2013-06-15T14:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-06-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2013/06/15/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -868,11 +1170,39 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Elasticsearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Monitor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Google</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">LAMP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
               </li>
             
             <div class="clearfix"></div>

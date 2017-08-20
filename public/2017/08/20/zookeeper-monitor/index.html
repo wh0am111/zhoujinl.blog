@@ -6,22 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://zhoujinl.github.io">
-  <title>软件随想录-卷2 | Jalon的博客</title>
+  <title>Zookeeper 监控 | Jalon的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="joel Spolsky著 阮一峰译Gitbook 电子书 寻找优秀程序员的三种办法 社招(简历)不靠谱，员工推荐不太靠谱走出去，参加开发者大会找实习生。创造自己的知名社区网站。  写给程序员的建议任何时刻不要想着推倒重来，重构而不是重新做一遍不添加任何新功能无论任何时刻向源码库添加代码，都要保证程序能够正常运行所要做的只是一些合乎逻辑的变换，几乎都是机械性的，而且能够立刻确定不会改变代码行为并不">
-<meta name="keywords" content="随笔">
+  <meta name="description" content="ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。 Zookeeper 命令行监控方法zookeeper monitor 常见四字命令：  echo stat|nc 127.0.0.1 2181来查看">
+<meta name="keywords" content="Monitor,Zookeeper">
 <meta property="og:type" content="article">
-<meta property="og:title" content="软件随想录-卷2">
-<meta property="og:url" content="http://zhoujinl.github.io/2017/06/20/more-joel-on-software/index.html">
+<meta property="og:title" content="Zookeeper 监控">
+<meta property="og:url" content="http://zhoujinl.github.io/2017/08/20/zookeeper-monitor/index.html">
 <meta property="og:site_name" content="Jalon的博客">
-<meta property="og:description" content="joel Spolsky著 阮一峰译Gitbook 电子书 寻找优秀程序员的三种办法 社招(简历)不靠谱，员工推荐不太靠谱走出去，参加开发者大会找实习生。创造自己的知名社区网站。  写给程序员的建议任何时刻不要想着推倒重来，重构而不是重新做一遍不添加任何新功能无论任何时刻向源码库添加代码，都要保证程序能够正常运行所要做的只是一些合乎逻辑的变换，几乎都是机械性的，而且能够立刻确定不会改变代码行为并不">
-<meta property="og:image" content="http://zhoujinl.github.io/img/about_time.jpg">
-<meta property="og:image" content="http://zhoujinl.github.io/img/judge_code.jpg">
-<meta property="og:updated_time" content="2017-08-20T10:26:30.010Z">
+<meta property="og:description" content="ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。 Zookeeper 命令行监控方法zookeeper monitor 常见四字命令：  echo stat|nc 127.0.0.1 2181来查看">
+<meta property="og:updated_time" content="2017-08-20T12:34:51.939Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="软件随想录-卷2">
-<meta name="twitter:description" content="joel Spolsky著 阮一峰译Gitbook 电子书 寻找优秀程序员的三种办法 社招(简历)不靠谱，员工推荐不太靠谱走出去，参加开发者大会找实习生。创造自己的知名社区网站。  写给程序员的建议任何时刻不要想着推倒重来，重构而不是重新做一遍不添加任何新功能无论任何时刻向源码库添加代码，都要保证程序能够正常运行所要做的只是一些合乎逻辑的变换，几乎都是机械性的，而且能够立刻确定不会改变代码行为并不">
-<meta name="twitter:image" content="http://zhoujinl.github.io/img/about_time.jpg">
+<meta name="twitter:title" content="Zookeeper 监控">
+<meta name="twitter:description" content="ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。 Zookeeper 命令行监控方法zookeeper monitor 常见四字命令：  echo stat|nc 127.0.0.1 2181来查看">
   
     <link rel="alternative" href="/atom.xml" title="Jalon的博客" type="application/atom+xml">
   
@@ -163,123 +160,37 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-more-joel-on-software" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-zookeeper-monitor" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      软件随想录-卷2
+      Zookeeper 监控
     </h1>
   
 
         
-        <a href="/2017/06/20/more-joel-on-software/" class="archive-article-date">
-  	<time datetime="2017-06-20T09:36:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-20</time>
+        <a href="/2017/08/20/zookeeper-monitor/" class="archive-article-date">
+  	<time datetime="2017-08-20T12:07:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>joel Spolsky著 阮一峰译<br><a href="https://wizardforcel.gitbooks.io/joel-on-software/content/index.html" title="软件随想录" target="_blank" rel="external">Gitbook 电子书</a></p>
-<h1 id="寻找优秀程序员的三种办法"><a href="#寻找优秀程序员的三种办法" class="headerlink" title="寻找优秀程序员的三种办法"></a>寻找优秀程序员的三种办法</h1><blockquote>
-<p>社招(简历)不靠谱，员工推荐不太靠谱<br>走出去，参加开发者大会<br>找实习生。<br>创造自己的知名社区网站。</p>
-</blockquote>
-<h1 id="写给程序员的建议"><a href="#写给程序员的建议" class="headerlink" title="写给程序员的建议"></a>写给程序员的建议</h1><p>任何时刻不要想着推倒重来，重构而不是重新做一遍<br>不添加任何新功能<br>无论任何时刻向源码库添加代码，都要保证程序能够正常运行<br>所要做的只是一些合乎逻辑的变换，几乎都是机械性的，而且能够立刻确定不会改变代码行为<br>并不是每个人都适合当程序员</p>
+        <p>ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。</p>
+<h1 id="Zookeeper-命令行监控方法"><a href="#Zookeeper-命令行监控方法" class="headerlink" title="Zookeeper 命令行监控方法"></a>Zookeeper 命令行监控方法</h1><p><a href="http://zookeeper.apache.org/doc/r3.4.6/zookeeperAdmin.html#sc_zkCommands" title="zookeeper 4字节命令监控" target="_blank" rel="external">zookeeper monitor</a></p>
+<p>常见四字命令：</p>
+<ul>
+<li><code>echo stat|nc 127.0.0.1 2181</code>来查看哪个节点被选择作为follower或者leader</li>
+<li><code>echo ruok|nc 127.0.0.1 2181</code>测试是否启动了该Server，若回复imok表示已经启动。</li>
+<li><code>echo cons | nc 127.0.0.1 2181</code>列出所有连接到服务器的客户端的完全的连接/会话的详情。</li>
+<li><code>echo wchs | nc 127.0.0.1 2181</code>列出服务器 watch 的详细信息。</li>
+</ul>
 <a id="more"></a>
-<h1 id="为什么做一个内部程序员就槽糕透了呢"><a href="#为什么做一个内部程序员就槽糕透了呢" class="headerlink" title="为什么做一个内部程序员就槽糕透了呢"></a>为什么做一个内部程序员就槽糕透了呢</h1><ol>
-<li>你永远无法用正确的事情做事情，总是被迫用最保险的方法做事。</li>
-<li>一旦你的程序可以用了，你就不得不停止项目，转而开发其他项目。</li>
-<li>如果你在专业的软件公司中编程，你的工作与公司的主营业务是直接相关，是能够为公司直接带来收入的，这至少意味着一件事情，就是管理层会想到你。</li>
-</ol>
-<h1 id="程序员管理的三种方法"><a href="#程序员管理的三种方法" class="headerlink" title="程序员管理的三种方法"></a>程序员管理的三种方法</h1><table>
-<thead>
-<tr>
-<th style="text-align:center">方法</th>
-<th style="text-align:center">说明</th>
-<th style="text-align:center">缺点</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">军事化管理法</td>
-<td style="text-align:center">军队可以让士兵绝对服从命令</td>
-<td style="text-align:center">1.会使团队人员不爽 2.不可能管理到所有细节 3.对于技术问题，程序员才是做决策的最佳人选，因为他们知道更多的技术细节。</td>
-</tr>
-<tr>
-<td style="text-align:center">经济利益驱动法</td>
-<td style="text-align:center">假设每个人的行为动机都是钱</td>
-<td style="text-align:center">1.会降低团队人员的内部驱动力，当你停止付钱或者他们不再需要钱，他们的驱动力就会消失。2.员工会追求局部利益最大化，最终为了自己的利益可能做出对公司不好的行为。3.会鼓励员工与制度博弈，寻找制度的缺失之处来为自己谋利。经济利益驱动法更像是管理的退位，表面上简化了管理，但实际上却是管理的缺失。</td>
-</tr>
-<tr>
-<td style="text-align:center">认同法</td>
-<td style="text-align:center">方法：1.培养认同感。设定积极的目标和价值观。2.培养凝聚力和归属感。团队的人要一起吃饭，多组织集体活动。3.信息共享。和员工要做到信息共享，以便员工更好的工作。</td>
-<td style="text-align:center">实施起来不容易。</td>
-</tr>
-</tbody>
-</table>
-<p>推荐做法：<strong><em>认同法</em></strong></p>
-<h1 id="设计的作用"><a href="#设计的作用" class="headerlink" title="设计的作用"></a>设计的作用</h1><blockquote>
-<p>字体平滑、反锯齿和次像素渲染<br>苹果公司的设计有利于频幕界面和印刷一致<br>微软公司的设计有利于屏幕阅读<br>苹果的字体放到微软的系统上面会有一点模糊，比如在mac上面装windows系统，字体会变模糊。<br>寸土必争<br>随便找一个东西，如果你找不到它的缺点，那就说明你的转型还没有成功。<br>大构想的陷阱<br>阅读的时候，眼镜只会盯住一个点，而其它地方像素很低，但是由于眼镜的注意力快速移动，让你产生了你已经看到了所有细节的错觉。软件设计中，你以为你可以做出来，看上去大体流程很清楚，但是一旦你考虑细节的时候你才会知道，你少考虑了很多东西。</p>
-</blockquote>
-<h1 id="别让用户做太多选择"><a href="#别让用户做太多选择" class="headerlink" title="别让用户做太多选择"></a>别让用户做太多选择</h1><p>微软的关机选项有7种，再加上电源键(点击和长按)或者一些电脑上有快捷键关机或者重启，合下屏幕也可以睡眠或者关机。这样给用户的选择就有10种左右，而过多的选择会让用户产生选择困难而失去幸福感。<br>如何改进？</p>
-<blockquote>
-<p>Switch User之前肯定要Lock，这两个按钮可以合并。<br>Log Off就是为了退出当前运行的所有程序，可以和ShutDown按钮合并。<br>Restart和shutdown是一样的，只需要按两次shutdown按钮即可(假设关机速度很快，而且不是远程操控(一般远程操控是命令行操作))<br>Sleep和Hibernate说实话我不太懂他们的区别。<br>现在我们只剩下 switch user/lock     log off/shutdown     hibernate/sleep三个按钮。<br>考虑switch user/lock     hibernate/sleep这两个按钮的合并，当我按下这一个复合按钮的时候，会弹出一个切换用户的对话框，然后30秒内没有切换用户会进入休眠状态，而这个过程中计算机是一直锁定的。<br>现在计算机只剩两个按钮了，就是这两种状态：<br>1、我要离开电脑一会儿<br>2、我要离开电脑很久，需要拔下电源<br>现在考虑能不能合并这两个按钮，现在的电源管理系统已经能够做到你在睡眠状态下不关闭电脑也只耗很低的电源，即使你拔掉电源也能够保存你的数据，不会损失你的任何数据，所以这两个按钮完全可以合并。</p>
-</blockquote>
-<h1 id="管理大型项目"><a href="#管理大型项目" class="headerlink" title="管理大型项目"></a>管理大型项目</h1><p>火星人的耳机：这一部分主要讲述了为什么现在的web标准如此复杂。</p>
-<blockquote>
-<ul>
-<li>一对多模式：假设你在火星上发现火星人还在使用录音机，你发现了商机，你决定卖mp3给他们，为此你要制造一种耳机，于是你写了一份规格书，让其他厂商制造耳机，但是你的规格书里误写了电压的参数，结果厂商做出来的耳机总是爆炸，然后经过调整声音的赫兹终于能正常使用了，就这样你让火星人大量买了你的耳机，然后你想让你的耳机拥有打电话的功能，就是加一个麦克风，然后你重新设计了一个适配器，这个适配器考虑了以后的升级问题，但是推出以后火星人根本没人买，他们只在乎家里收藏了一衣柜的耳机，根本不在乎什么麦克风功能。然后你只有在耳机的接口处扩展功能，把耳机的金属轴接口分成三份，其中一份可以用来做麦克风功能，你又设计了一份协议，在接口处发射一个信号，当mp3找到这个信号的时候，就开启麦克风模式，否则就开启向后兼容的耳机模式，现在，整个市场就变成了一对多模式，同一个耳机有多个版本了。  </li>
-</ul>
-<ul>
-<li>多对多模式：由于你不停的给mp3增加功能，每个生产耳机的厂商都要把耳机在每一个mp3型号测试一遍，由于规格书的繁琐难读，有些产品出现了不兼容的现象，然后为了降低成本，厂商不得不只让耳机适配最流行的mp3播放器，这样，当耳机插入其他mp3的时候，会播放不出来或者更严重的会爆炸。原因是规格书有一个功能写得不清楚，比如，如果下雨，电压会升高，如果不下雨，电压不变。但是关于下雪，规格书没有讲，有的地方把下雪当成了下雨的一种，原因是都要用到雨刮器。有的地方从不下雪，所以就不是下雨。</li>
-</ul>
-<ul>
-<li>然后有一个无聊的家伙，发表了一篇文章，利用漏洞可以解决兼容问题，比如用程序把下雪也误判成下雨，于是市场上就出现了多个版本的耳机和mp3，这就是多对多。</li>
-</ul>
-</blockquote>
-<p>微软的ie8就是类似上面的流程</p>
-<ul>
-<li>为什么微软office的文件格式如此复杂</li>
-<li>要挣钱就别嫌脏</li>
-</ul>
-<h1 id="编程建议"><a href="#编程建议" class="headerlink" title="编程建议"></a>编程建议</h1><ul>
-<li>询证式日程规划<br>完后速率 = 估计用时/实际用时<br>蒙特卡洛方法估计值：<br><img src="/img/about_time.jpg" alt="about time"></li>
-<li><p>让错误的代码显而易见<br>网站中，用户输入的字符串必须经过编码后才能使用，否则有可能会受到攻击。<br>怎样才能尽量避免这种出错方式呢？</p>
-<blockquote>
-<p>第一种办法：当用户的数据一传进来，就对数据进行编码。但是当需要直接存到数据库的时候实际上是要存储原来的字符的，所以不行。<br>第二种办法：制定一种规范，只有输出字符串的时候才进行编码，但是有个问题，有些要输出的字符串是不可以进行编码的，比如包含html语句的(换行等)。<br>第三种方法：设置中间变量，所有用户输入的字符串都必须赋给以us开头的变量，所有已知安全的字符串和包含html的字符换，都赋给s开头的变量。<br><img src="/img/judge_code.jpg" alt="judge code"></p>
-</blockquote>
-</li>
-<li><p>把相同的代码放在一起<br>把相同的代码尽量放到一起，将有助于帮你发现你程序的错误。比如：<code>i = j*5</code> c语言可以一眼看出这句代码的意思，但是c++中必须要考虑到i和j的数据类型，以防进行了运算符重载，还要考虑继承和多态的问题。所以在c++中这样抽象不是好的行为</p>
-</li>
-</ul>
-<h1 id="开办软件公司"><a href="#开办软件公司" class="headerlink" title="开办软件公司"></a>开办软件公司</h1><p>软件个体户<br>乔尔创建Fog Creek的真正目的：那就是创造一家我们愿意为之工作的软件公司。<br>优秀的程序员和平庸的程序员差距非常大。</p>
-<h1 id="经营软件公司"><a href="#经营软件公司" class="headerlink" title="经营软件公司"></a>经营软件公司</h1><ul>
-<li>仿生学办公室</li>
-<li>他山之石，不可攻玉</li>
-<li>简化性</li>
-<li>揉一揉，搓一搓</li>
-<li>组织beta测试的十二个最高秘诀</li>
-<li>建立优质客户服务的7个步骤<blockquote>
-<p>1.每件事都有两种做法：a.表面的、快速的解决方法;b.思考、防止类似的问题再次发生<br>2.建议吹掉灰尘：客户忘记插好接口，可以以其他委婉的方式提醒客户<br>3.让客户迷上你<br>4.承受责备<br>5.学会说软话<br>6.学会做木偶<br>7.贪婪让你一无所获</p>
-</blockquote>
-</li>
-</ul>
-<h1 id="发布软件"><a href="#发布软件" class="headerlink" title="发布软件"></a>发布软件</h1><ul>
-<li><p>挑选发布日期</p>
-<blockquote>
-<p>1.确定发布日期，这个日期可以根据可观情况也可根据主管愿望进行选择<br>2.列出软件要实现的功能，然后按照优先级排序<br>3.每当你落后于预定进度时，就把排在最后的功能砍掉</p>
-</blockquote>
-</li>
-<li><p>如何为软件定价：招无定式</p>
-</li>
-</ul>
-<h1 id="修订软件"><a href="#修订软件" class="headerlink" title="修订软件"></a>修订软件</h1><ul>
-<li>五个为什么</li>
-<li>确定优先顺序</li>
-</ul>
+<h1 id="Zookeeper-Jmx监控方法"><a href="#Zookeeper-Jmx监控方法" class="headerlink" title="Zookeeper Jmx监控方法"></a>Zookeeper Jmx监控方法</h1><p>需先启用JMX端口。修改zookeeper的启动脚本vim zkServer.sh。找到启动参数ZOOMAIN，修改为下面值。其中local.only=false，设为false才能在远程建立连接。<br>可使用Jconsole 通过IP、jmx端口连接到Zookeeper。</p>
 
       
 
@@ -319,13 +230,28 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Monitor</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Zookeeper</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -375,7 +301,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://zhoujinl.github.io/2017/06/20/more-joel-on-software/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://zhoujinl.github.io/2017/08/20/zookeeper-monitor/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -390,8 +316,8 @@
 <nav id="article-nav">
   
   
-    <a href="/2016/08/19/python-build/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Python编程环境搭建</div>
+    <a href="/2017/08/17/elasticsearch-monitor/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Elasticsearch 监控</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -418,7 +344,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#寻找优秀程序员的三种办法"><span class="toc-number">1.</span> <span class="toc-text">寻找优秀程序员的三种办法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#写给程序员的建议"><span class="toc-number">2.</span> <span class="toc-text">写给程序员的建议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么做一个内部程序员就槽糕透了呢"><span class="toc-number">3.</span> <span class="toc-text">为什么做一个内部程序员就槽糕透了呢</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#程序员管理的三种方法"><span class="toc-number">4.</span> <span class="toc-text">程序员管理的三种方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#设计的作用"><span class="toc-number">5.</span> <span class="toc-text">设计的作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#别让用户做太多选择"><span class="toc-number">6.</span> <span class="toc-text">别让用户做太多选择</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#管理大型项目"><span class="toc-number">7.</span> <span class="toc-text">管理大型项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#编程建议"><span class="toc-number">8.</span> <span class="toc-text">编程建议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#开办软件公司"><span class="toc-number">9.</span> <span class="toc-text">开办软件公司</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#经营软件公司"><span class="toc-number">10.</span> <span class="toc-text">经营软件公司</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#发布软件"><span class="toc-number">11.</span> <span class="toc-text">发布软件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#修订软件"><span class="toc-number">12.</span> <span class="toc-text">修订软件</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Zookeeper-命令行监控方法"><span class="toc-number">1.</span> <span class="toc-text">Zookeeper 命令行监控方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Zookeeper-Jmx监控方法"><span class="toc-number">2.</span> <span class="toc-text">Zookeeper Jmx监控方法</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -532,11 +458,39 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Elasticsearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Monitor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Google</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">LAMP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
               </li>
             
             <div class="clearfix"></div>
