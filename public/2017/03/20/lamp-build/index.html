@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://zhoujinl.github.io/2017/03/20/lamp-build/index.html">
 <meta property="og:site_name" content="Jalon的博客">
 <meta property="og:description" content="LAMP 即 LINUX + APACHE + MYSQL +PHP 搭建网站的四大组件。下面详细介绍其普通的安装方法和配置。 LINUX咳，操作系统安装，可以使用VirtualBox创建虚拟机即可。这个就不细说了。推荐使用Centos6+ Apache httpd 安装yum install httpd 配置查找出Httpd相关配置文件 rpm -ql httpd|grep &amp;#39;/etc&amp;">
-<meta property="og:updated_time" content="2017-08-20T12:06:53.517Z">
+<meta property="og:updated_time" content="2017-08-20T12:42:49.580Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LAMP站点搭建过程分析">
 <meta name="twitter:description" content="LAMP 即 LINUX + APACHE + MYSQL +PHP 搭建网站的四大组件。下面详细介绍其普通的安装方法和配置。 LINUX咳，操作系统安装，可以使用VirtualBox创建虚拟机即可。这个就不细说了。推荐使用Centos6+ Apache httpd 安装yum install httpd 配置查找出Httpd相关配置文件 rpm -ql httpd|grep &amp;#39;/etc&amp;">
@@ -234,7 +234,7 @@
 <p>[root@www ~]# mkdir /var/www/html/cgi<br>[root@www ~]# vim /var/www/html/cgi/helloworld.pl</p>
 <p>#!/usr/bin/perl<br>print “Content-type: text/html\r\n\r\n”;<br>print “Hello, World.”;<br>[root@www ~]# chmod a+x /var/www/html/cgi/helloworld.pl  #赋权 非常重要</p>
 </blockquote>
-<h1 id="phpBB3-搭建论坛："><a href="#phpBB3-搭建论坛：" class="headerlink" title="phpBB3 搭建论坛："></a>phpBB3 搭建论坛：</h1><p>首先到官网上下载zip安装包，和汉化包。然后将安装包解压到/var/www/html apache网站目录下，重命名解压后的文件夹名称phpBB3。然后通过浏览器url: <a href="http://localhost:80/phpBB3/install/index.php" target="_blank" rel="external">http://localhost:80/phpBB3/install/index.php</a> 安装界面进行安装。<br>在新建论坛之后，要记得对论坛赋权限。然后还有把网站下的install文件删除或者重命名。否则看不见论坛，处于关闭状态。</p>
+<h1 id="phpBB3-搭建论坛"><a href="#phpBB3-搭建论坛" class="headerlink" title="phpBB3 搭建论坛"></a>phpBB3 搭建论坛</h1><p>首先到官网上下载zip安装包，和汉化包。然后将安装包解压到/var/www/html apache网站目录下，重命名解压后的文件夹名称phpBB3。然后通过浏览器url: <a href="http://localhost:80/phpBB3/install/index.php" target="_blank" rel="external">http://localhost:80/phpBB3/install/index.php</a> 安装界面进行安装。<br>在新建论坛之后，要记得对论坛赋权限。然后还有把网站下的install文件删除或者重命名。否则看不见论坛，处于关闭状态。</p>
 <h1 id="Wordpress-搭建个人博客"><a href="#Wordpress-搭建个人博客" class="headerlink" title="Wordpress 搭建个人博客"></a>Wordpress 搭建个人博客</h1><p>首先到官网上下载zip安装包。与phpBB3一样，将其解压后的文件夹复制到/var/www/html/目录下，重命名为wordpress。然后到通过浏览器访问<a href="http://localhost:80/wordpress/" target="_blank" rel="external">http://localhost:80/wordpress/</a> 访问，即可自动跳转至配置界面，进行数据库的配置，最后会在/wordpress目录下生成wp_config.php配置文件，然后进入安装界面。配置用户名密码即可完成安装。<br>ps:在配置过程中，如果出现没有权限生成wp_config.php。手动复制文件内容自己创建也可。我在安装过程中出现问题，就是配置完文件后，并且生成wp_config.php后，一直又重复回到配置界面。仿佛就像他没有检测到生成的wp_config.php文件一样，及时我重启httpd服务也是如此。后来我把/wordpress 目录下的文件全部删除，重新配置一把就可以了。</p>
 
       
@@ -394,7 +394,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LINUX"><span class="toc-number">1.</span> <span class="toc-text">LINUX</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Apache-httpd"><span class="toc-number">2.</span> <span class="toc-text">Apache httpd</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MYSQL"><span class="toc-number">3.</span> <span class="toc-text">MYSQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP"><span class="toc-number">4.</span> <span class="toc-text">PHP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#初试网站搭建"><span class="toc-number">5.</span> <span class="toc-text">初试网站搭建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#phpBB3-搭建论坛："><span class="toc-number">6.</span> <span class="toc-text">phpBB3 搭建论坛：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Wordpress-搭建个人博客"><span class="toc-number">7.</span> <span class="toc-text">Wordpress 搭建个人博客</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LINUX"><span class="toc-number">1.</span> <span class="toc-text">LINUX</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Apache-httpd"><span class="toc-number">2.</span> <span class="toc-text">Apache httpd</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MYSQL"><span class="toc-number">3.</span> <span class="toc-text">MYSQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP"><span class="toc-number">4.</span> <span class="toc-text">PHP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#初试网站搭建"><span class="toc-number">5.</span> <span class="toc-text">初试网站搭建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#phpBB3-搭建论坛"><span class="toc-number">6.</span> <span class="toc-text">phpBB3 搭建论坛</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Wordpress-搭建个人博客"><span class="toc-number">7.</span> <span class="toc-text">Wordpress 搭建个人博客</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -516,7 +516,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -524,11 +528,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">

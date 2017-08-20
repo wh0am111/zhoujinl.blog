@@ -96,7 +96,7 @@ print "Hello, World.";
 
 
 
-# phpBB3 搭建论坛：
+# phpBB3 搭建论坛  
 首先到官网上下载zip安装包，和汉化包。然后将安装包解压到/var/www/html apache网站目录下，重命名解压后的文件夹名称phpBB3。然后通过浏览器url: http://localhost:80/phpBB3/install/index.php 安装界面进行安装。 
 在新建论坛之后，要记得对论坛赋权限。然后还有把网站下的install文件删除或者重命名。否则看不见论坛，处于关闭状态。
 
