@@ -6,17 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://zhoujinl.github.io">
-  <title>Archives: 2016 | Jalon&#39;Blog</title>
+  <title>TICK 监控体系 | Jalon&#39;Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="无善无恶心之体，有善有恶意之动。知善知恶是良知，为善去恶是格物。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jalon&#39;Blog">
-<meta property="og:url" content="http://zhoujinl.github.io/archives/2016/index.html">
+  <meta name="description" content="Tick1.Tick安装部署Tick简介TICK 是由 InfluxData 开发的一套运维工具栈，由 Telegraf, InfluxDB, Chronograf, Kapacitor 四个工具的首字母组成。这一套组件将收集数据和入库、数据库存储、展示、告警四者囊括了。">
+<meta name="keywords" content="TICK,InfluxDB,Telegraf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TICK 监控体系">
+<meta property="og:url" content="http://zhoujinl.github.io/2018/04/27/tick/index.html">
 <meta property="og:site_name" content="Jalon&#39;Blog">
-<meta property="og:description" content="无善无恶心之体，有善有恶意之动。知善知恶是良知，为善去恶是格物。">
+<meta property="og:description" content="Tick1.Tick安装部署Tick简介TICK 是由 InfluxData 开发的一套运维工具栈，由 Telegraf, InfluxDB, Chronograf, Kapacitor 四个工具的首字母组成。这一套组件将收集数据和入库、数据库存储、展示、告警四者囊括了。">
+<meta property="og:image" content="http://zhoujinl.github.io/img/tick.png">
+<meta property="og:image" content="http://zhoujinl.github.io/img/agg-pro.jpg">
+<meta property="og:updated_time" content="2018-04-27T04:40:37.397Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jalon&#39;Blog">
-<meta name="twitter:description" content="无善无恶心之体，有善有恶意之动。知善知恶是良知，为善去恶是格物。">
+<meta name="twitter:title" content="TICK 监控体系">
+<meta name="twitter:description" content="Tick1.Tick安装部署Tick简介TICK 是由 InfluxData 开发的一套运维工具栈，由 Telegraf, InfluxDB, Chronograf, Kapacitor 四个工具的首字母组成。这一套组件将收集数据和入库、数据库存储、展示、告警四者囊括了。">
+<meta name="twitter:image" content="http://zhoujinl.github.io/img/tick.png">
   
     <link rel="alternative" href="/atom.xml" title="Jalon&#39;Blog" type="application/atom+xml">
   
@@ -158,48 +163,225 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-tick" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/19/python-build/" class="archive-article-date">
-  	<time datetime="2016-08-19T14:13:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-19</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/19/python-build/">Python编程环境搭建</a>
+    <h1 class="article-title" itemprop="name">
+      TICK 监控体系
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/04/27/tick/" class="archive-article-date">
+  	<time datetime="2018-04-27T04:33:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Tick"><a href="#Tick" class="headerlink" title="Tick"></a>Tick</h1><h2 id="1-Tick安装部署"><a href="#1-Tick安装部署" class="headerlink" title="1.Tick安装部署"></a>1.Tick安装部署</h2><h3 id="Tick简介"><a href="#Tick简介" class="headerlink" title="Tick简介"></a>Tick简介</h3><p>TICK 是由 InfluxData 开发的一套运维工具栈，由 Telegraf, InfluxDB, Chronograf, Kapacitor 四个工具的首字母组成。<br>这一套组件将收集数据和入库、数据库存储、展示、告警四者囊括了。</p>
+<p><img src="/img/tick.png" alt="TICK框架图" title="TICK"> </p>
+<a id="more"></a>
+<p>Telegraf</p>
+<p>是一个数据收集和入库的工具。提供了很多 input 和 output 插件，比如收集本地的 cpu、load、网络流量等数据，然后写入 InfluxDB 、Kafka或者OpenTSDB等。相当于ELK栈中的 logstash 功能。</p>
+<p>InfluxDB</p>
+<p>InfluxDB 是一个开源的GO语言为基础的数据库, 用来处理时间序列数据,提供了较高的可用性。与opentsdb类似，支持HTTP API方式，写入和读取数据。相当于ELK栈中的elasticsearch功能。</p>
+<p>Chronograf</p>
+<p>从InfluxDB时间序列数据的数据可视化工具，负责从InfluxDB收集数据，并将数据图表以web的形式发布。它使用简单,包括模板和库可以快速构建实时数据的可视化仪表板，轻松地创建报警和自动化的规则。相当于ELK栈中的kibana功能。</p>
+<p>Kapacitor</p>
+<p>Kapacitor是InfluxDB的数据处理引擎，主要作用是时间序列数据处理、监视和警报。</p>
+<h3 id="TICK安装（DOCKER版）"><a href="#TICK安装（DOCKER版）" class="headerlink" title="TICK安装（DOCKER版）"></a>TICK安装（DOCKER版）</h3><p><a href="https://portal.influxdata.com/downloads" target="_blank" rel="external">官方安装介绍</a></p>
+<p>本地安装版本分别是telegraf1.5,influxdb1.42,chronograf1.4,kapacitor1.4</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker pull telegraf</div><div class="line">docker pull influxdb</div><div class="line">docker pull quay.io/influxdb/chronograf</div><div class="line">docker pull kapacitor</div></pre></td></tr></table></figure>
+<h3 id="TICK配置与运行"><a href="#TICK配置与运行" class="headerlink" title="TICK配置与运行"></a>TICK配置与运行</h3><p><a href="https://github.com/influxdata/influxdata-docker" target="_blank" rel="external">TICK Docker file</a></p>
+<h4 id="InfluxDB"><a href="#InfluxDB" class="headerlink" title="InfluxDB"></a>InfluxDB</h4><p><a href="https://github.com/docker-library/docs/blob/master/influxdb/README.md" target="_blank" rel="external">How to run</a></p>
+<p>参数介绍：</p>
+<ul>
+<li>8086 HTTP API port</li>
+<li>8083 Administrator interface port, if it is enabled</li>
+<li>2003 Graphite support, if it is enabled</li>
+</ul>
+<p>启动server 可修改默认配置文件等，详见[How to run]</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run --name influxdb -d -p 8086:8086 -p 8083:8083  -e INFLUXDB_ADMIN_ENABLED=<span class="literal">true</span>  -v /var/lib/influxdb:/var/lib/influxdb  influxdb</div></pre></td></tr></table></figure>
+<p>初始化数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">docker run --rm \</div><div class="line">      -e INFLUXDB_DB=db0 -e INFLUXDB_ADMIN_ENABLED=<span class="literal">true</span> \</div><div class="line">      -e INFLUXDB_ADMIN_USER=admin -e INFLUXDB_ADMIN_USER=admin \</div><div class="line">      -e INFLUXDB_USER=telegraf -e INFLUXDB_USER_PASSWORD=telegraf \</div><div class="line">      -v /var/lib/influxdb:/var/lib/influxdb \</div><div class="line">      influxdb /init-influxdb.sh</div></pre></td></tr></table></figure>
+<p>启动client</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run --rm --link=influxdb -it influxdb influx -host influxdb</div></pre></td></tr></table></figure>
+<p>其他命令</p>
+<p>创建数据库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -G http://localhost:8086/query --data-urlencode "q=CREATE DATABASE mydb"</div></pre></td></tr></table></figure>
+<p>插入数据</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">curl -XPOST "http://localhost:8086/write?db=mydb" \</div><div class="line">-d 'cpu,host=server01,region=uswest load=42 1434055562000000000'</div><div class="line"></div><div class="line">curl -XPOST "http://localhost:8086/write?db=mydb" \</div><div class="line">-d 'cpu,host=server02,region=uswest load=78 1434055562000000000'</div><div class="line"></div><div class="line">curl -XPOST "http://localhost:8086/write?db=mydb" \</div><div class="line">-d 'cpu,host=server03,region=useast load=15.4 1434055562000000000'</div></pre></td></tr></table></figure>
+<p>查询数据</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -G "http://localhost:8086/query?pretty=true" --data-urlencode "db=mydb" \</div><div class="line">--data-urlencode "q=SELECT * FROM cpu WHERE host='server01' AND time &lt; now() - 1d"</div></pre></td></tr></table></figure>
+<p>分析数据</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -G "http://localhost:8086/query?pretty=true" --data-urlencode "db=mydb" \</div><div class="line">--data-urlencode "q=SELECT mean(load) FROM cpu WHERE region='uswest'"</div></pre></td></tr></table></figure>
+<p><a href="https://docs.influxdata.com/influxdb/v1.4/concepts/key_concepts/#field-key" target="_blank" rel="external">InfluxDB概念介绍</a></p>
+<h4 id="Telegraf"><a href="#Telegraf" class="headerlink" title="Telegraf"></a>Telegraf</h4><p><a href="https://github.com/influxdata/influxdata-docker/blob/ae56003075c8f39b6c265294ca8235c2c5235cc6/telegraf/1.5/alpine/Dockerfile" target="_blank" rel="external">Telegraf Docker file</a><br><a href="https://github.com/docker-library/docs/blob/master/telegraf/content.md" target="_blank" rel="external">How to run</a></p>
+<p>参数介绍：</p>
+<ul>
+<li>8125 StatsD</li>
+<li>8092 UDP</li>
+<li>8094 TCP</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run --name telegraf -d -p 8125:8125 -p 8092:8092 -p 8094:8094  -v ~/telegraf.conf:/etc/telegraf/telegraf.conf telegraf</div></pre></td></tr></table></figure>
+<h4 id="Chronograf"><a href="#Chronograf" class="headerlink" title="Chronograf"></a>Chronograf</h4><p>Exposed Ports</p>
+<ul>
+<li>8888TCP – Listen  endpoint</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -d --name chronograf -p 8888:8888 -v /var/lib/chronograf:/var/lib/chronograf quay.io/influxdb/chronograf chronograf</div></pre></td></tr></table></figure>
+<h4 id="Kapacitor"><a href="#Kapacitor" class="headerlink" title="Kapacitor"></a>Kapacitor</h4><p>Exposed Ports</p>
+<ul>
+<li>9092 TCP – HTTP API endpoint</li>
+</ul>
+<p>需要修改默认的kapacitor.conf url地址，默认是配置localhost，而容器进程肯定不是localhost.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -d --name kapacitor -p 9092:9092 -v /var/lib/kapacitor:/var/lib/kapacitor  -v ~/kapacitor.conf:/etc/kapacitor/kapacitor.conf  kapacitor</div></pre></td></tr></table></figure>
+<p>查看帮助</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker exec  kapacitor kapacitor help</div><div class="line">docker exec  kapacitor kapacitor list tasks </div><div class="line">docker exec  kapacitor kapacitor show CPURule</div></pre></td></tr></table></figure>
+<p>常见问题：</p>
+<p>容器告警因为ip原因无法，注册到influxdb时，ip是容器id，如下，导致Influxdb 无法识别该地址，性能数据无法发送到kapacitor。因此临时解决方案是修改容器的hostname</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&gt; show SUBSCRIPTIONS</div><div class="line">name: telegraf</div><div class="line">retention_policy name                                           mode destinations</div><div class="line">---------------- ----                                           ---- ------------</div><div class="line">autogen          kapacitor-8ca0780c-5208-41d5-91ec-05b28d13b2b8 ANY  [http://c9816b89f375:9092]</div><div class="line"></div><div class="line">name: _internal</div><div class="line">retention_policy name                                           mode destinations</div><div class="line">---------------- ----                                           ---- ------------</div><div class="line">monitor          kapacitor-8ca0780c-5208-41d5-91ec-05b28d13b2b8 ANY  [http://c9816b89f375:9092]</div><div class="line"></div><div class="line">name: chronograf</div><div class="line">retention_policy name                                           mode destinations</div><div class="line">---------------- ----                                           ---- ------------</div><div class="line">autogen          kapacitor-8ca0780c-5208-41d5-91ec-05b28d13b2b8 ANY  [http://c9816b89f375:9092]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -d --name kapacitor -e KAPACITOR_HOSTNAME=192.168.14.165 -p 9092:9092 -v /var/lib/kapacitor:/var/lib/kapacitor  -v ~/kapacitor.conf:/etc/kapacitor/kapacitor.conf  kapacitor</div></pre></td></tr></table></figure>
+<h2 id="2-Telgraf重点介绍"><a href="#2-Telgraf重点介绍" class="headerlink" title="2.Telgraf重点介绍"></a>2.Telgraf重点介绍</h2><p>Telegraf是一个用Go编写的代理程序，用于收集，处理，汇总和编写度量标准。</p>
+<p>Telegraf是插件驱动，并有4个不同的插件的概念：</p>
+<ol>
+<li><a href="https://github.com/influxdata/telegraf#input-plugins" target="_blank" rel="external">输入插件</a>从系统，服务或第三方API收集指标。</li>
+<li><a href="https://github.com/influxdata/telegraf#processor-plugins" target="_blank" rel="external">处理器插件</a>转换，修饰和/或过滤度量标准</li>
+<li><a href="https://github.com/influxdata/telegraf#aggregator-plugins" target="_blank" rel="external">聚合器插件</a>创建聚合度量（例如平均值，最小值，最大值，分位数等）</li>
+<li><a href="https://github.com/influxdata/telegraf#output-plugins" target="_blank" rel="external">输出插件</a>将指标写入各个目标</li>
+</ol>
+<p>Telegraf 二进制文件包含对所有支持的采集对象的采集功能，只是可以通过配置选择性的开启。如果更新某个对象的采集指标，则需要重新编译整个二进制文件。</p>
+<h3 id="测试数据-帮助命令"><a href="#测试数据-帮助命令" class="headerlink" title="测试数据/帮助命令"></a>测试数据/帮助命令</h3><p>~/telegraf.conf 测试用配置文件，可定义输入插件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -v ~/telegraf.conf:/etc/telegraf/telegraf.conf --rm telegraf telegraf --config /etc/telegraf/telegraf.conf  --test</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run --rm telegraf telegraf --help</div></pre></td></tr></table></figure>
+<h3 id="数据收集方式"><a href="#数据收集方式" class="headerlink" title="数据收集方式"></a>数据收集方式</h3><p>push 模式，由telegraf 根据input配置主动采集并发送到output配置的后端。一般是InfluxDB数据库。TICK并无服务端的概念，在TICK监控部署文档的架构图中可知。</p>
+<p><a href="https://github.com/influxdata/telegraf/blob/master/README.md" target="_blank" rel="external">input-output-plugins</a></p>
+<h3 id="InfluxDB-Line-Protocol-数据格式"><a href="#InfluxDB-Line-Protocol-数据格式" class="headerlink" title="InfluxDB Line Protocol 数据格式"></a>InfluxDB Line Protocol 数据格式</h3><p>InfluxDB Line Protocol 格式</p>
+<p>Telegraf metrics, like InfluxDB <a href="https://docs.influxdata.com/influxdb/v0.10/write_protocols/line/" target="_blank" rel="external">points</a>, are a combination of four basic parts:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">measurement_name[,tag1=val1,...]  field1=val1,field2=val2,...</div></pre></td></tr></table></figure>
+<ol>
+<li><p>Measurement Name</p>
+</li>
+<li><p>Tags</p>
+</li>
+<li><p>Fields</p>
+</li>
+<li><p>Timestamp</p>
+<p>​</p>
+</li>
+</ol>
+<h3 id="输入数据格式"><a href="#输入数据格式" class="headerlink" title="输入数据格式"></a>输入数据格式</h3><p><a href="https://docs.influxdata.com/telegraf/v1.5/concepts/data_formats_input/" target="_blank" rel="external">telegraf有六种采集数据输入格式</a></p>
+<p>Telegraf is able to parse the following input data formats into metrics:</p>
+<ol>
+<li><a href="https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md#influx" target="_blank" rel="external">InfluxDB Line Protocol</a></li>
+<li><a href="https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md#json" target="_blank" rel="external">JSON</a></li>
+<li><a href="https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md#graphite" target="_blank" rel="external">Graphite</a></li>
+<li><a href="https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md#value" target="_blank" rel="external">Value</a>, ie: 45 or “booyah”</li>
+<li><a href="https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md#nagios" target="_blank" rel="external">Nagios</a> (exec input only)</li>
+<li><a href="https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md#collectd" target="_blank" rel="external">Collectd</a></li>
+</ol>
+<p>默认是第一种：InfluxDB Line Protocol。Graphite、Nagios、Collected都是其他开源监控项目，其中Nagios是比较完整的监控系统，其格式只能用在exec输入插件中；Collected一般用作系统守护进程，采集系统统计信息，并且通过网络开放数据；Graphite则是另外一套监控系统，也是C-S模式。</p>
+<p>如果是配置成其他格式，那么采集回来的数据（受限于采集方可吐出的数据），将会被Telegraf  转换为其可识别的InfluxDB Line Protocol。</p>
+<h3 id="输出数据格式"><a href="#输出数据格式" class="headerlink" title="输出数据格式"></a>输出数据格式</h3><p><a href="https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_OUTPUT.md" target="_blank" rel="external">telegraf有三种采集数据输出格式</a></p>
+<p>Telegraf is able to serialize metrics into the following output data formats:</p>
+<ol>
+<li><a href="https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_OUTPUT.md#influx" target="_blank" rel="external">InfluxDB Line Protocol</a></li>
+<li><a href="https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_OUTPUT.md#json" target="_blank" rel="external">JSON</a></li>
+<li><a href="https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_OUTPUT.md#graphite" target="_blank" rel="external">Graphite</a></li>
+</ol>
+<p>一般而言，输出格式如果是其他格式，例如Json，那么输出的对象则一般为file类型。从实际应用中来看，即通过telegraf采集回数据，生成json文件，发送至其他系统进行处理。</p>
+<p>以下是采集结果示例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">* Plugin: inputs.cpu, Collection 1</div><div class="line">* Plugin: inputs.cpu, Collection 2</div><div class="line"><span class="meta">&gt;</span><span class="bash"> cpu,cpu=cpu0,host=0336dcb23579 usage_system=0,usage_idle=100,usage_nice=0,usage_iowait=0,usage_irq=0,usage_guest=0,usage_user=0,usage_softirq=0,usage_steal=0,usage_guest_nice=0 1515338025000000000</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> cpu,cpu=cpu1,host=0336dcb23579 usage_user=0,usage_guest_nice=0,usage_steal=0,usage_guest=0,usage_system=0,usage_idle=100,usage_nice=0,usage_iowait=0,usage_irq=0,usage_softirq=0 1515338025000000000</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> cpu,cpu=cpu2,host=0336dcb23579 usage_idle=100,usage_nice=0,usage_steal=0,usage_guest=0,usage_user=0,usage_system=0,usage_iowait=0,usage_irq=0,usage_softirq=0,usage_guest_nice=0 1515338025000000000</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> cpu,host=0336dcb23579,cpu=cpu3 usage_softirq=0,usage_guest_nice=0,usage_idle=100,usage_nice=0,usage_iowait=0,usage_irq=0,usage_steal=0,usage_guest=0,usage_user=0,usage_system=0 1515338025000000000</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> cpu,cpu=cpu-total,host=0336dcb23579 usage_guest_nice=0,usage_idle=100,usage_nice=0,usage_irq=0,usage_steal=0,usage_guest=0,usage_user=0,usage_system=0,usage_iowait=0,usage_softirq=0 1515338025000000000</span></div></pre></td></tr></table></figure>
+<p>cpu：measurements ，类似oracle的表名</p>
+<p>cpu=cpu-total,host=0336dcb23579 ： cpu、host为tag，索引；</p>
+<p>usage_guest_nice=0,usage_idle=100,usage_nice=0… : usage_guest_nice等为field，即被采集的指标字段。field在measurements是不可或缺的，tag可无， tag与field用空格隔开，field放置在后面</p>
+<p>1515338025000000000： time 时间戳</p>
+<h3 id="数据过滤-聚合"><a href="#数据过滤-聚合" class="headerlink" title="数据过滤/聚合"></a>数据过滤/聚合</h3><p>Measurement Filtering</p>
+<p><img src="/img/agg-pro.jpg" alt="数据处理"></p>
+<p>Filters can be configured per input, output, processor, or aggregator, see below for examples.</p>
+<ul>
+<li><strong>namepass</strong>: An array of glob pattern strings. Only points whose measurement name matches a pattern in this list are emitted.</li>
+<li><strong>namedrop</strong>: The inverse of <code>namepass</code>. If a match is found the point is discarded. This is tested on points after they have passed the <code>namepass</code> test.</li>
+<li><strong>fieldpass</strong>: An array of glob pattern strings. Only fields whose field key matches a pattern in this list are emitted. Not available for outputs.</li>
+<li><strong>fielddrop</strong>: The inverse of <code>fieldpass</code>. Fields with a field key matching one of the patterns will be discarded from the point. This is tested on points after they have passed the <code>fieldpass</code> test. Not available for outputs.</li>
+<li><strong>tagpass</strong>: A table mapping tag keys to arrays of glob pattern strings. Only points that contain a tag key in the table and a tag value matching one of its patterns is emitted.</li>
+<li><strong>tagdrop</strong>: The inverse of <code>tagpass</code>. If a match is found the point is discarded. This is tested on points after they have passed the <code>tagpass</code> test.</li>
+<li><strong>taginclude</strong>: An array of glob pattern strings. Only tags with a tag key matching one of the patterns are emitted. In contrast to <code>tagpass</code>, which will pass an entire point based on its tag, <code>taginclude</code> removes all non matching tags from the point. This filter can be used on both inputs &amp; outputs, but it is <em>recommended</em> to be used on inputs, as it is more efficient to filter out tags at the ingestion point.</li>
+<li><strong>tagexclude</strong>: The inverse of <code>taginclude</code>. Tags with a tag key matching one of the patterns will be discarded from the point.</li>
+</ul>
+<p>输入数据示例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[[inputs.cpu]]</div><div class="line">  percpu = true</div><div class="line">  totalcpu = false</div><div class="line">  fielddrop = ["cpu_time"]</div><div class="line"><span class="meta">  #</span><span class="bash"> Don<span class="string">'t collect CPU data for cpu6 &amp; cpu7</span></span></div><div class="line">  [inputs.cpu.tagdrop]</div><div class="line">    cpu = [ "cpu6", "cpu7" ]</div><div class="line"></div><div class="line">[[inputs.disk]]</div><div class="line">  [inputs.disk.tagpass]</div><div class="line">    # tagpass conditions are OR, not AND.</div><div class="line">    # If the (filesystem is ext4 or xfs) OR (the path is /opt or /home)</div><div class="line">    # then the metric passes</div><div class="line">    fstype = [ "ext4", "xfs" ]</div><div class="line">    # Globs can also be used on the tag values</div><div class="line">    path = [ "/opt", "/home*" ]</div></pre></td></tr></table></figure>
+<p>输出数据示例</p>
+<p>与输入（采集）数据过滤类似，可定义多个输出源</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">[[outputs.influxdb]]</div><div class="line">  urls = [ "http://localhost:8086" ]</div><div class="line">  database = "telegraf"</div><div class="line"><span class="meta">  #</span><span class="bash"> Drop all measurements that start with <span class="string">"aerospike"</span></span></div><div class="line">  namedrop = ["aerospike*"]</div><div class="line"></div><div class="line">[[outputs.influxdb]]</div><div class="line">  urls = [ "http://localhost:8086" ]</div><div class="line">  database = "telegraf-aerospike-data"</div><div class="line"><span class="meta">  #</span><span class="bash"> Only accept aerospike data:</span></div><div class="line">  namepass = ["aerospike*"]</div><div class="line"></div><div class="line">[[outputs.influxdb]]</div><div class="line">  urls = [ "http://localhost:8086" ]</div><div class="line">  database = "telegraf-cpu0-data"</div><div class="line"><span class="meta">  #</span><span class="bash"> Only store measurements <span class="built_in">where</span> the tag <span class="string">"cpu"</span> matches the value <span class="string">"cpu0"</span></span></div><div class="line">  [outputs.influxdb.tagpass]</div><div class="line">    cpu = ["cpu0"]</div></pre></td></tr></table></figure>
+<p>Aggregator Plugins</p>
+<ul>
+<li><a href="https://github.com/influxdata/telegraf/blob/master/plugins/aggregators/basicstats" target="_blank" rel="external">basicstats</a></li>
+<li><a href="https://github.com/influxdata/telegraf/blob/master/plugins/aggregators/minmax" target="_blank" rel="external">minmax</a></li>
+<li><a href="https://github.com/influxdata/telegraf/blob/master/plugins/aggregators/histogram" target="_blank" rel="external">histogram</a></li>
+</ul>
+<h3 id="部署方式"><a href="#部署方式" class="headerlink" title="部署方式"></a>部署方式</h3><p>客户端部署方式，可结合Ansible 进行部署，以及配置管理。官方说明并未看到。</p>
+<h3 id="任务配置"><a href="#任务配置" class="headerlink" title="任务配置"></a>任务配置</h3><p>客户端配置文件配置 /etc/telegraf/telegraf.conf，可配置指标采集周期、过滤指标等。</p>
+<h3 id="告警处理"><a href="#告警处理" class="headerlink" title="告警处理"></a>告警处理</h3><p>与Telegraf配合使用的告警处理程序是<a href="https://github.com/influxdata/kapacitor" target="_blank" rel="external">kapacitor</a> </p>
+<p>Open source framework for processing, monitoring, and alerting on time series data。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">TICK</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">InfluxDB</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Telegraf</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -212,55 +394,115 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://zhoujinl.github.io/2018/04/27/tick/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/06/21/joel-on-software-1-2/" class="archive-article-date">
-  	<time datetime="2016-06-21T03:18:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-21</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2017/08/20/zookeeper-monitor/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Zookeeper 监控</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/21/joel-on-software-1-2/">软件随想录-卷1（下）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Tick"><span class="toc-number">1.</span> <span class="toc-text">Tick</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Tick安装部署"><span class="toc-number">1.1.</span> <span class="toc-text">1.Tick安装部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tick简介"><span class="toc-number">1.1.1.</span> <span class="toc-text">Tick简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TICK安装（DOCKER版）"><span class="toc-number">1.1.2.</span> <span class="toc-text">TICK安装（DOCKER版）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TICK配置与运行"><span class="toc-number">1.1.3.</span> <span class="toc-text">TICK配置与运行</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#InfluxDB"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">InfluxDB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Telegraf"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">Telegraf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Chronograf"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">Chronograf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Kapacitor"><span class="toc-number">1.1.3.4.</span> <span class="toc-text">Kapacitor</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Telgraf重点介绍"><span class="toc-number">1.2.</span> <span class="toc-text">2.Telgraf重点介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#测试数据-帮助命令"><span class="toc-number">1.2.1.</span> <span class="toc-text">测试数据/帮助命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据收集方式"><span class="toc-number">1.2.2.</span> <span class="toc-text">数据收集方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#InfluxDB-Line-Protocol-数据格式"><span class="toc-number">1.2.3.</span> <span class="toc-text">InfluxDB Line Protocol 数据格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入数据格式"><span class="toc-number">1.2.4.</span> <span class="toc-text">输入数据格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出数据格式"><span class="toc-number">1.2.5.</span> <span class="toc-text">输出数据格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据过滤-聚合"><span class="toc-number">1.2.6.</span> <span class="toc-text">数据过滤/聚合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署方式"><span class="toc-number">1.2.7.</span> <span class="toc-text">部署方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#任务配置"><span class="toc-number">1.2.8.</span> <span class="toc-text">任务配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#告警处理"><span class="toc-number">1.2.9.</span> <span class="toc-text">告警处理</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -283,8 +525,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
