@@ -9,8 +9,6 @@ tags:
 categories: 技术
 ---
 
-# Tick
-
 ## 1.Tick安装部署
 
 ### Tick简介
