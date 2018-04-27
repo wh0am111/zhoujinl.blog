@@ -1,10 +1,11 @@
 ---
 title: TICK 监控体系
-date: 2018-04-27 12:33:38
+date: 2018-02-27 12:33:38
 tags: 
  - TICK
  - InfluxDB 
  - Telegraf
+ - Go
 categories: 技术
 ---
 
