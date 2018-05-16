@@ -31,7 +31,6 @@ categories: 技术
 |          agent部署方式           |                   人工                   |      人工      |          人工          |          人工          |
 |            任务更新策略            |                   无                    |      无       |          无           | dashbord可关联主机和pluins |
 |   <a href="#数据查询">数据查询</a>   |                HTTP API                | SQL/HTTP API |  HTTP API/redis-cli  |         sql          |
-|           支持的采集对象            |                                        |              |                      |                      |
 
 <!-- more -->
 
@@ -54,8 +53,6 @@ Openfalcon 也是采用Push 方式，由Client发送采集数据到transport，�
 - 主机类指标CPU
 - 开源软件Redis
 
-  
-
 <a href="#对比表格">返回目录</a>
 
 ## 数据模型
@@ -77,8 +74,6 @@ Openfalcon 也是采用Push 方式，由Client发送采集数据到transport，�
 ```
 
 其中，metric是监控指标名称，endpoint是监控实体，tags是监控数据的属性标签，counterType是Open-Falcon定义的数据类型(取值为GAUGE、COUNTER)，step为监控数据的上报周期，value和timestamp是有效的监控数据。
-
-
 
 - prometheus    <metric name>{<label name>=<label value>, ...}
 
@@ -126,8 +121,6 @@ prometheus_tsdb_compaction_chunk_range_count 4.3107877e+07
 
 histogram_quantile(0.9, rate(prometheus_tsdb_compaction_chunk_range_bucket[10m]))
 
-
-
 - Telegraf 支持多种输入输出格式，重点讲解InfluxDB Line Protocol，另外两种是json/Graphite
 
 ```
@@ -165,8 +158,6 @@ cpu,cpu=cpu-total,dc=us-east-1,host=tars usage_idle=98.09,usage_user=0.89 145532
 tars.cpu-total.us-east-1.cpu.usage_user 0.89 1455320690
 tars.cpu-total.us-east-1.cpu.usage_idle 98.09 1455320690
 ```
-
-
 
 - Sensu 指标数据，实际上是check的返回结果。应该是json字符串
 
@@ -278,24 +269,21 @@ sensu.cpu.guest 0.00 1515534170
 
    ​ 缺点：需要额外维护多套监控系统以及对应的转换程序；对该转换程序尽可能做得通用，因为可以同时对接多套监控系统；对于指标的定义、配置，仍然需要沿用原来的方法，即还要开发KM、配置表单，这部分是无法避免的。
 
-   ​
 
 
-1. 仅复用监控系统的采集客户端，类似现在的Agent对接开源组件的模式。例如prometheus，可以复用其exporter。即prometheus exporter独立运行并暴露数据至指定监听端口，Agent开发http接口定时扫描读取该端口暴露的指标即可，然后由KM负责解析转换，最终存入网管系统。
+2. 仅复用监控系统的采集客户端，类似现在的Agent对接开源组件的模式。例如prometheus，可以复用其exporter。即prometheus exporter独立运行并暴露数据至指定监听端口，Agent开发http接口定时扫描读取该端口暴露的指标即可，然后由KM负责解析转换，最终存入网管系统。
 
    优点：仅仅用到第三方开源系统的采集客户端，抓取我们想要的数据。对原有的网管系统也不需要过多的改造，仅需要新增KM，对这类采集结果做格式解析处理。exporter暴露的数据指标相对统一，处理起来也比较方便。
 
    缺点：需要额外维护exporter，且需要开通exporter监听端口的访问权限；exporter的定义配置如何通知给网管系统；对于指标的定义、配置，仍然需要沿用原来的方法，即还要开发KM、配置表单，这部分是无法避免的。
 
-   ​
 
-2. 复用监控系统的采集客户端，同时改造网管系统部分功能。例如telegraf，telegraf支持输出结果到influxdb,或者生成本地json文件。如果是本地Json文件，则与prometheus类似，由KM解析即可。如果是influxdb，则需开发程序从influxdb读取解析数据(相当于另一个数据源)。
+
+3. 复用监控系统的采集客户端，同时改造网管系统部分功能。例如telegraf，telegraf支持输出结果到influxdb,或者生成本地json文件。如果是本地Json文件，则与prometheus类似，由KM解析即可。如果是influxdb，则需开发程序从influxdb读取解析数据(相当于另一个数据源)。
 
    优点：仅仅用到第三方开源系统的采集客户端，抓取我们想要的数据。对原有的网管系统也不需要过多的改造，仅需要新增KM或者influxdb读取程序，对这类采集结果做格式解析处理。telegraf暴露的数据指标相对统一，处理起来也比较方便。
 
    缺点：需要额外维护telegraf进程；telegraf的定义配置如何通知给网管系统；对于指标的定义、配置，仍然需要沿用原来的方法，即还要KM、配置表单，这部分是无法避免的。
-
-
 
 <a href="#对比表格">返回目录</a>
 
