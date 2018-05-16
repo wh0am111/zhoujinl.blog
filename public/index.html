@@ -160,6 +160,165 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-compared" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/16/compared/">开源监控体系对比</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/16/compared/" class="archive-article-date">
+  	<time datetime="2018-05-16T15:10:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Prometheus、TICK、Sensu、Openfalcon-对比"><a href="#Prometheus、TICK、Sensu、Openfalcon-对比" class="headerlink" title="Prometheus、TICK、Sensu、Openfalcon 对比"></a>Prometheus、TICK、Sensu、Openfalcon 对比</h2><p><strong>目的</strong></p>
+<ul>
+<li>研究开源监控系统架构，完善现有的后台采集结构</li>
+<li>利用开源监控体系中的采集插件，节省KM研究、开发新监控对象（各类分布式组件）的时间</li>
+<li>使用开源监控系统为独立的一套监控系统，作为端到端等分布式应用场景的监控系统</li>
+<li>与现有网管后台结合，将开源监控系统作为一类采集数据源</li>
+</ul>
+<p> OpenTSDB、Graphite 偏向数据存储，并无完整的监控体系（采集、存储、告警、展示）。</p>
+<h2 id="对比表格"><a href="#对比表格" class="headerlink" title="对比表格"></a>对比表格</h2><p>以下列出几个重要的关注点</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Prometheus</th>
+<th style="text-align:center">TICK</th>
+<th style="text-align:center">Sensu</th>
+<th style="text-align:center">Openfalcon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">开发语言</td>
+<td style="text-align:center">Go</td>
+<td style="text-align:center">Go</td>
+<td style="text-align:center">ruby</td>
+<td style="text-align:center">Go</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="#数据收集方式">数据收集方式</a></td>
+<td style="text-align:center">Pull/Pushgateway</td>
+<td style="text-align:center">Push</td>
+<td style="text-align:center">Push</td>
+<td style="text-align:center">Push</td>
+</tr>
+<tr>
+<td style="text-align:center">采集客户端</td>
+<td style="text-align:center">各种Exporter</td>
+<td style="text-align:center">telegraf</td>
+<td style="text-align:center">sensu-client<br>各种脚本</td>
+<td style="text-align:center">Falcon-agent<br>各种脚本</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="#数据模型">数据模型</a></td>
+<td style="text-align:center">key+tag</td>
+<td style="text-align:center">key+tag</td>
+<td style="text-align:center">json</td>
+<td style="text-align:center">key+tag</td>
+</tr>
+<tr>
+<td style="text-align:center">存储</td>
+<td style="text-align:center">本地存储 <br>远程数据库(influxDB可读写/OpenTSDB只写)</td>
+<td style="text-align:center">influxDB</td>
+<td style="text-align:center">redis</td>
+<td style="text-align:center">mysql/opentsdb</td>
+</tr>
+<tr>
+<td style="text-align:center">agent部署方式</td>
+<td style="text-align:center">人工</td>
+<td style="text-align:center">人工</td>
+<td style="text-align:center">人工</td>
+<td style="text-align:center">人工</td>
+</tr>
+<tr>
+<td style="text-align:center">任务更新策略</td>
+<td style="text-align:center">无</td>
+<td style="text-align:center">无</td>
+<td style="text-align:center">无</td>
+<td style="text-align:center">dashbord可关联主机和pluins</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="#数据查询">数据查询</a></td>
+<td style="text-align:center">HTTP API</td>
+<td style="text-align:center">SQL/HTTP API</td>
+<td style="text-align:center">HTTP API/redis-cli</td>
+<td style="text-align:center">sql</td>
+</tr>
+<tr>
+<td style="text-align:center">支持的采集对象</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+        
+          <a class="article-more-a" href="/2018/05/16/compared/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/16/compared/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-open-falcon" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1038,86 +1197,6 @@
 
 
   
-    <article id="post-joel-on-software-1-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/21/joel-on-software-1-2/">软件随想录-卷1（下）</a>
-    </h1>
-  
-
-        
-        <a href="/2016/06/21/joel-on-software-1-2/" class="archive-article-date">
-  	<time datetime="2016-06-21T03:18:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>joel Spolsky著  杨帆译<br><a href="https://wizardforcel.gitbooks.io/joel-on-software/content/index.html" title="软件随想录" target="_blank" rel="external">Gitbook 电子书</a></p>
-<h1 id="开发人员的管理"><a href="#开发人员的管理" class="headerlink" title="开发人员的管理"></a>开发人员的管理</h1><ul>
-<li>面试游击指南<br>面试官有时候会故意刁难你，看你能否坚持自己的正确的观点。好的面试者会坚持自己的观点，然后试图说服面试官。</li>
-<li>重金激励害多利少<br>原因是绩效考核的不正确，负面评价对士气伤害很大，而正面评价对士气的激励也不如想象的那么好(会让他们觉得自己是为了拿到好成绩才好好工作的，就像巴普洛夫的狗)。<br>大多数人都认为自己把事情做得很好(即使不是)。评价机制的不合理：比如某人是团队的粘合剂，总是能够在士气低落的时候激励大家，某人总喜欢研究新技术，别人有问题总要靠他解决，但是他写的代码量很少，这两种人可能得到的评价很低，但是不可否认他们的作用很大。<br>绩效考评会使团队产生间隙。</li>
-</ul>
-        
-          <a class="article-more-a" href="/2016/06/21/joel-on-software-1-2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/06/21/joel-on-software-1-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1215,10 +1294,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Google</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
@@ -1236,6 +1311,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Google</a>
               </li>
              
               <li class="article-tag-list-item">

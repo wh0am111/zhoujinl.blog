@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://zhoujinl.github.io">
-  <title>Archives: 2015/8 | Jalon&#39;Blog</title>
+  <title>开源监控体系对比 | Jalon&#39;Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="无善无恶心之体，有善有恶意之动。知善知恶是良知，为善去恶是格物。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jalon&#39;Blog">
-<meta property="og:url" content="http://zhoujinl.github.io/archives/2015/08/index.html">
+  <meta name="description" content="Prometheus、TICK、Sensu、Openfalcon 对比目的  研究开源监控系统架构，完善现有的后台采集结构 利用开源监控体系中的采集插件，节省KM研究、开发新监控对象（各类分布式组件）的时间 使用开源监控系统为独立的一套监控系统，作为端到端等分布式应用场景的监控系统 与现有网管后台结合，将开源监控系统作为一类采集数据源   OpenTSDB、Graphite 偏向数据存储，并无完整">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开源监控体系对比">
+<meta property="og:url" content="http://zhoujinl.github.io/2018/05/16/compared/index.html">
 <meta property="og:site_name" content="Jalon&#39;Blog">
-<meta property="og:description" content="无善无恶心之体，有善有恶意之动。知善知恶是良知，为善去恶是格物。">
+<meta property="og:description" content="Prometheus、TICK、Sensu、Openfalcon 对比目的  研究开源监控系统架构，完善现有的后台采集结构 利用开源监控体系中的采集插件，节省KM研究、开发新监控对象（各类分布式组件）的时间 使用开源监控系统为独立的一套监控系统，作为端到端等分布式应用场景的监控系统 与现有网管后台结合，将开源监控系统作为一类采集数据源   OpenTSDB、Graphite 偏向数据存储，并无完整">
+<meta property="og:updated_time" content="2018-05-16T15:16:45.792Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jalon&#39;Blog">
-<meta name="twitter:description" content="无善无恶心之体，有善有恶意之动。知善知恶是良知，为善去恶是格物。">
+<meta name="twitter:title" content="开源监控体系对比">
+<meta name="twitter:description" content="Prometheus、TICK、Sensu、Openfalcon 对比目的  研究开源监控系统架构，完善现有的后台采集结构 利用开源监控体系中的采集插件，节省KM研究、开发新监控对象（各类分布式组件）的时间 使用开源监控系统为独立的一套监控系统，作为端到端等分布式应用场景的监控系统 与现有网管后台结合，将开源监控系统作为一类采集数据源   OpenTSDB、Graphite 偏向数据存储，并无完整">
   
     <link rel="alternative" href="/atom.xml" title="Jalon&#39;Blog" type="application/atom+xml">
   
@@ -158,60 +159,386 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-compared" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/08/19/google-full/" class="archive-article-date">
-  	<time datetime="2015-08-19T14:53:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-19</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/19/google-full/">Google 使用技巧</a>
+    <h1 class="article-title" itemprop="name">
+      开源监控体系对比
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
+        
+        <a href="/2018/05/16/compared/" class="archive-article-date">
+  	<time datetime="2018-05-16T15:10:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Prometheus、TICK、Sensu、Openfalcon-对比"><a href="#Prometheus、TICK、Sensu、Openfalcon-对比" class="headerlink" title="Prometheus、TICK、Sensu、Openfalcon 对比"></a>Prometheus、TICK、Sensu、Openfalcon 对比</h2><p><strong>目的</strong></p>
+<ul>
+<li>研究开源监控系统架构，完善现有的后台采集结构</li>
+<li>利用开源监控体系中的采集插件，节省KM研究、开发新监控对象（各类分布式组件）的时间</li>
+<li>使用开源监控系统为独立的一套监控系统，作为端到端等分布式应用场景的监控系统</li>
+<li>与现有网管后台结合，将开源监控系统作为一类采集数据源</li>
+</ul>
+<p> OpenTSDB、Graphite 偏向数据存储，并无完整的监控体系（采集、存储、告警、展示）。</p>
+<h2 id="对比表格"><a href="#对比表格" class="headerlink" title="对比表格"></a>对比表格</h2><p>以下列出几个重要的关注点</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Prometheus</th>
+<th style="text-align:center">TICK</th>
+<th style="text-align:center">Sensu</th>
+<th style="text-align:center">Openfalcon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">开发语言</td>
+<td style="text-align:center">Go</td>
+<td style="text-align:center">Go</td>
+<td style="text-align:center">ruby</td>
+<td style="text-align:center">Go</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="#数据收集方式">数据收集方式</a></td>
+<td style="text-align:center">Pull/Pushgateway</td>
+<td style="text-align:center">Push</td>
+<td style="text-align:center">Push</td>
+<td style="text-align:center">Push</td>
+</tr>
+<tr>
+<td style="text-align:center">采集客户端</td>
+<td style="text-align:center">各种Exporter</td>
+<td style="text-align:center">telegraf</td>
+<td style="text-align:center">sensu-client<br>各种脚本</td>
+<td style="text-align:center">Falcon-agent<br>各种脚本</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="#数据模型">数据模型</a></td>
+<td style="text-align:center">key+tag</td>
+<td style="text-align:center">key+tag</td>
+<td style="text-align:center">json</td>
+<td style="text-align:center">key+tag</td>
+</tr>
+<tr>
+<td style="text-align:center">存储</td>
+<td style="text-align:center">本地存储 <br>远程数据库(influxDB可读写/OpenTSDB只写)</td>
+<td style="text-align:center">influxDB</td>
+<td style="text-align:center">redis</td>
+<td style="text-align:center">mysql/opentsdb</td>
+</tr>
+<tr>
+<td style="text-align:center">agent部署方式</td>
+<td style="text-align:center">人工</td>
+<td style="text-align:center">人工</td>
+<td style="text-align:center">人工</td>
+<td style="text-align:center">人工</td>
+</tr>
+<tr>
+<td style="text-align:center">任务更新策略</td>
+<td style="text-align:center">无</td>
+<td style="text-align:center">无</td>
+<td style="text-align:center">无</td>
+<td style="text-align:center">dashbord可关联主机和pluins</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="#数据查询">数据查询</a></td>
+<td style="text-align:center">HTTP API</td>
+<td style="text-align:center">SQL/HTTP API</td>
+<td style="text-align:center">HTTP API/redis-cli</td>
+<td style="text-align:center">sql</td>
+</tr>
+<tr>
+<td style="text-align:center">支持的采集对象</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h2 id="数据收集方式"><a href="#数据收集方式" class="headerlink" title="数据收集方式"></a>数据收集方式</h2><p>Prometheus 与众不同的采用Pull方式，由服务端主动从被监控机器上面抓取数据。Prometheus 也提供Pushgateway的方式，支持其他数据源主动推送数据到Pushgateway，Pushgateway只做数据缓存，之后仍然是等待服务端抓取。Exporter作为被监控对象暴露指标的客户端，运行在被监控对象上面，并且在Prometheus 服务端配置作为Job，需配置抓取地址端口和间隔。针对各种监控对象，可部署各种Exporter。</p>
+<p>Pull和Push的主要区别在于Pull方式下，监控系统可以方便的增加删除被监控对象，但是需要被监控对象主动开放端口，这对防火墙/NAT方式下的被监控对象是特殊的要求。而Push模式下，每个采集客户端需要知道服务端的信息，才能上报数据。相比之下，网管后台使用Rabbitmq隔离了服务端的信息，但是仍然需要客户端配置Rabbitmq信息。</p>
+<p>TICK使用telegraf作为数据采集端，由telegraf 根据input配置主动采集并发送到output配置的后端，一般是InfluxDB数据库。telegraf还能对采集数据做聚合过滤等处理。telegraf是Go开发的二进制可执行对象，各种对象的采集均打包在一起，通过指定input插件类型，可以指定采集某类指标。相比之下，网管后台使用Java+KM的方式，由Java负责进程调度，KM负责指定采集对象。</p>
+<p>Sensu 也是采用Push 方式，Sensu由Client发送采集数据到transport，服务端再去transport 读取数据，transport一般使用Rabbitmq。这点跟网管有点类似。Client利用插件采集数据，是ruby脚本，需要额外安装。安装后会在/opt/sensu/embedded/bin/ 路径下下载安装rubu解释器和check插件。process-checks 是进程检测插件，cpu-checks 是cpu检测指标插件。采集配置较为繁琐。</p>
+<p>Openfalcon 也是采用Push 方式，由Client发送采集数据到transport，与Sensu  不同的是，transport 会做一些数据规整，检查之后，转发到多个后端系统去处理。transfer目前支持的业务后端，有三种，judge、graph、opentsdb。judge是告警判定组件，graph作为高性能数据存储、归档、查询组件，opentsdb主要用作数据存储服务。falcon-agent本身仅支持主机类的指标采集，对于其他业务系统、开源软件，需独立的使用采集脚本，将数据按照规定格式，发送到falcon-agent 所在的监听端口。最终再由falcon-agent 转发到服务端。</p>
+<p>综上，其实介绍了四种主要的采集逻辑。以两种不同对象的采集作为示例说明</p>
+<ul>
+<li>主机类指标CPU</li>
+<li>开源软件Redis</li>
+</ul>
+<p><a href="#对比表格">返回目录</a></p>
+<h2 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h2><p>架构的分层隔离，依赖于各层之间接口的规范。对于采集数据而言，Pull/Push 体现的是传输方式，而数据格式，则是数据组织的规范。以下是各个系统的数据格式。</p>
+<ul>
+<li>openfalcon  采用和OpenTSDB相似的数据格式：metric、endpoint加多组key value tags</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    metric: load.1min,</div><div class="line">    endpoint: open-falcon-host,</div><div class="line">    tags: srv=falcon,idc=aws-sgp,group=az1,</div><div class="line">    value: 1.5,</div><div class="line">    timestamp: `date +%s`,</div><div class="line">    counterType: GAUGE,</div><div class="line">    step: 60</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中，metric是监控指标名称，endpoint是监控实体，tags是监控数据的属性标签，counterType是Open-Falcon定义的数据类型(取值为GAUGE、COUNTER)，step为监控数据的上报周期，value和timestamp是有效的监控数据。</p>
+<ul>
+<li><p>prometheus    <metric name="">{<label name="">=<label value="">, …}</label></label></metric></p>
+<p>prometheus 有四种类型的指标：counter、gauge、<a href="https://prometheus.io/docs/practices/histograms/" target="_blank" rel="external">summary、histogram</a> ，<a href="http://192.168.7.176:9090/metrics" target="_blank" rel="external">示例</a></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"># HELP http_requests_total Total number of HTTP requests made.</div><div class="line"># TYPE http_requests_total counter</div><div class="line">http_requests_total&#123;code=&quot;200&quot;,handler=&quot;alerts&quot;,method=&quot;get&quot;&#125; 2</div><div class="line">http_requests_total&#123;code=&quot;200&quot;,handler=&quot;config&quot;,method=&quot;get&quot;&#125; 1</div><div class="line">http_requests_total&#123;code=&quot;200&quot;,handler=&quot;flags&quot;,method=&quot;get&quot;&#125; 2</div><div class="line"></div><div class="line"># HELP go_goroutines Number of goroutines that currently exist.</div><div class="line"># TYPE go_goroutines gauge</div><div class="line">go_goroutines 235</div><div class="line"></div><div class="line"># HELP go_gc_duration_seconds A summary of the GC invocation durations.</div><div class="line"># TYPE go_gc_duration_seconds summary</div><div class="line">go_gc_duration_seconds&#123;quantile=&quot;0&quot;&#125; 4.5975e-05</div><div class="line">go_gc_duration_seconds&#123;quantile=&quot;0.25&quot;&#125; 8.3846e-05</div><div class="line">go_gc_duration_seconds&#123;quantile=&quot;0.5&quot;&#125; 0.000100729</div><div class="line">go_gc_duration_seconds&#123;quantile=&quot;0.75&quot;&#125; 0.000123377</div><div class="line">go_gc_duration_seconds&#123;quantile=&quot;1&quot;&#125; 0.026837959</div><div class="line">go_gc_duration_seconds_sum 1.990353198</div><div class="line">go_gc_duration_seconds_count 10956</div><div class="line"></div><div class="line"># HELP prometheus_tsdb_compaction_chunk_range Final time range of chunks on their first compaction</div><div class="line"># TYPE prometheus_tsdb_compaction_chunk_range histogram</div><div class="line">prometheus_tsdb_compaction_chunk_range_bucket&#123;le=&quot;100&quot;&#125; 336</div><div class="line">prometheus_tsdb_compaction_chunk_range_bucket&#123;le=&quot;400&quot;&#125; 336</div><div class="line">prometheus_tsdb_compaction_chunk_range_bucket&#123;le=&quot;1600&quot;&#125; 336</div><div class="line">prometheus_tsdb_compaction_chunk_range_bucket&#123;le=&quot;6400&quot;&#125; 336</div><div class="line">prometheus_tsdb_compaction_chunk_range_bucket&#123;le=&quot;25600&quot;&#125; 2336</div><div class="line">prometheus_tsdb_compaction_chunk_range_bucket&#123;le=&quot;102400&quot;&#125; 269009</div><div class="line">prometheus_tsdb_compaction_chunk_range_bucket&#123;le=&quot;409600&quot;&#125; 271929</div><div class="line">prometheus_tsdb_compaction_chunk_range_bucket&#123;le=&quot;1.6384e+06&quot;&#125; 4.2524554e+07</div><div class="line">prometheus_tsdb_compaction_chunk_range_bucket&#123;le=&quot;6.5536e+06&quot;&#125; 4.3107242e+07</div><div class="line">prometheus_tsdb_compaction_chunk_range_bucket&#123;le=&quot;2.62144e+07&quot;&#125; 4.3107877e+07</div><div class="line">prometheus_tsdb_compaction_chunk_range_bucket&#123;le=&quot;+Inf&quot;&#125; 4.3107877e+07</div><div class="line">prometheus_tsdb_compaction_chunk_range_sum 4.4190173791382e+13</div><div class="line">prometheus_tsdb_compaction_chunk_range_count 4.3107877e+07</div></pre></td></tr></table></figure>
+<p>不同类型的指标，有不同的查询方法，需根据指标含义选择合适的查询方法</p>
+<p>histogram_quantile(0.9, rate(prometheus_tsdb_compaction_chunk_range_bucket[10m]))</p>
+<ul>
+<li>Telegraf 支持多种输入输出格式，重点讲解InfluxDB Line Protocol，另外两种是json/Graphite</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">weather,location=us-midwest temperature=82 1465839830100400200</div><div class="line">  |    -------------------- --------------  |</div><div class="line">  |             |             |             |</div><div class="line">  |             |             |             |</div><div class="line">+-----------+--------+-+---------+-+---------+</div><div class="line">|measurement|,tag_set| |field_set| |timestamp|</div><div class="line">+-----------+--------+-+---------+-+---------+</div><div class="line"></div><div class="line">&gt; cpu,cpu=cpu0,host=0336dcb23579 usage_system=0,usage_idle=100,usage_nice=0,usage_iowait=0,usage_irq=0,usage_guest=0,usage_user=0,usage_softirq=0,usage_steal=0,usage_guest_nice=0 1515338025000000000</div><div class="line">&gt; cpu,cpu=cpu-total,host=0336dcb23579    usage_guest_nice=0,usage_idle=100,usage_nice=0,usage_irq=0,usage_steal=0,usage_guest=0,usage_user=0,usage_system=0,usage_iowait=0,usage_softirq=0 1515338025000000000</div></pre></td></tr></table></figure>
+<p>cpu：measurements ，类似oracle的表名  </p>
+<p>cpu=cpu-total,host=0336dcb23579 ： cpu、host为tag，索引；    内部以，分割 </p>
+<p>usage_guest_nice=0,usage_idle=100,usage_nice=0… : usage_guest_nice等为field，即被采集的指标字段。</p>
+<p><strong><em>field在measurements是不可或缺的，tag可无， tag与field用空格隔开，field放置在后面</em></strong></p>
+<p>1515338025000000000： time 时间戳</p>
+<p>这里顺便提下 influx metric -&gt; graphite 的转换格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">template = &quot;host.tags.measurement.field&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cpu,cpu=cpu-total,dc=us-east-1,host=tars usage_idle=98.09,usage_user=0.89 1455320660004257758</div><div class="line">=&gt;</div><div class="line">tars.cpu-total.us-east-1.cpu.usage_user 0.89 1455320690</div><div class="line">tars.cpu-total.us-east-1.cpu.usage_idle 98.09 1455320690</div></pre></td></tr></table></figure>
+<ul>
+<li>Sensu 指标数据，实际上是check的返回结果。应该是json字符串</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    "client": "tick-client",</div><div class="line">    "check": &#123;</div><div class="line">      "type": "metric",</div><div class="line">      "command": "metrics-cpu.rb",</div><div class="line">      "subscribers": [</div><div class="line">        "production"</div><div class="line">      ],</div><div class="line">      "interval": 10,</div><div class="line">      "handler": "tcp_socket",</div><div class="line">      "standalone": true,</div><div class="line">      "name": "cpu_metrics",</div><div class="line">      "issued": 1525270655,</div><div class="line">      "executed": 1525270655,</div><div class="line">      "duration": 0.074,</div><div class="line">      "output": "tick.cpu.total.user 738228 1525270655\n...",</div><div class="line">      "status": 0,</div><div class="line">      "history": [</div><div class="line">        0,</div><div class="line">		...</div><div class="line">      ]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>output 就是chcek返回结果。由不同的指标采集插件返回，默认的返回格式是Graphite 格式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">sensu.cpu.user 0.50 1515534170</div><div class="line">sensu.cpu.nice 0.00 1515534170</div><div class="line">sensu.cpu.system 0.00 1515534170</div><div class="line">sensu.cpu.idle 99.50 1515534170</div><div class="line">sensu.cpu.iowait 0.00 1515534170</div><div class="line">sensu.cpu.irq 0.00 1515534170</div><div class="line">sensu.cpu.softirq 0.00 1515534170</div><div class="line">sensu.cpu.steal 0.00 1515534170</div><div class="line">sensu.cpu.guest 0.00 1515534170</div></pre></td></tr></table></figure>
+<p><a href="#对比表格">返回目录</a></p>
+<h2 id="数据查询"><a href="#数据查询" class="headerlink" title="数据查询"></a>数据查询</h2><ul>
+<li><p>Prometheus   HTTP API接口查询，查询结果类型：”resultType”: “matrix” | “vector” | “scalar” | “string”</p>
+<p>matrix ： 返回某个时间段内的指标数据集合</p>
+<p>vector：返回单个时间点的指标数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Instant queries</div><div class="line">curl &apos;http://192.168.7.176:9090/api/v1/query?query=elasticsearch_node_stats_up&amp;time=1525313513.452&amp;_=1525313461038&apos; -s | python -m json.tool</div><div class="line"></div><div class="line"># Range queries</div><div class="line">curl &apos;http://192.168.7.176:9090/api/v1/query_range?query=prometheus_tsdb_compaction_chunk_range_bucket&amp;start=1525307102.216&amp;end=1525307302.216&amp;step=28&amp;_=1525313461049&apos; -s|python -m json.tool</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>TICK  HTTP API查询/登陆数据库查询sql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">curl -G &quot;http://192.168.7.176:8086/query?pretty=true&quot; --data-urlencode &quot;db=mydb&quot; \</div><div class="line">--data-urlencode &quot;q=SELECT * FROM cpu WHERE host=&apos;server01&apos; AND time &lt; now() - 1d&quot;</div><div class="line"></div><div class="line">##==&gt;</div><div class="line">SELECT * FROM cpu WHERE host=&apos;server01&apos; AND time &lt; now() - 1d</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>Sensu   HTTP API查询/登陆redis查询sql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">curl -s http://127.0.0.1:4567/clients | jq .</div><div class="line">curl -s http://localhost:4567/events | jq .</div><div class="line">curl -s http://localhost:4567/results | jq .</div><div class="line">curl -s http://localhost:4567/checks | jq .</div><div class="line"></div><div class="line">###===&gt;</div><div class="line">redis-cli</div><div class="line">keys * </div><div class="line">get result:tick-client:cpu_metrics</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>Openfalcon </p>
+<p>从mysql数据库中取数</p>
+<p>​</p>
+</li>
+</ul>
+<p><a href="#对比表格">返回目录</a></p>
+<h2 id="网管对接"><a href="#网管对接" class="headerlink" title="网管对接"></a>网管对接</h2><ol>
+<li><p>跟云资源采集类似，将上述监控系统作为一个数据采集中心。开发一个转储接口程序，从监控系统中（数据库或者REST API）读取配置、性能数据等，转换数据格式，存入网管系统。</p>
+<p>优点：可以方便对接第三方开源系统，利用其成熟的监控指标和稳定的监控体系。对原有的网管系统也不需要过多的改造，相当于改造重心在转储接口程序。</p>
+<p>​ 缺点：需要额外维护多套监控系统以及对应的转换程序；对该转换程序尽可能做得通用，因为可以同时对接多套监控系统；对于指标的定义、配置，仍然需要沿用原来的方法，即还要开发KM、配置表单，这部分是无法避免的。</p>
+<p>​</p>
+</li>
+</ol>
+<ol>
+<li><p>仅复用监控系统的采集客户端，类似现在的Agent对接开源组件的模式。例如prometheus，可以复用其exporter。即prometheus exporter独立运行并暴露数据至指定监听端口，Agent开发http接口定时扫描读取该端口暴露的指标即可，然后由KM负责解析转换，最终存入网管系统。</p>
+<p>优点：仅仅用到第三方开源系统的采集客户端，抓取我们想要的数据。对原有的网管系统也不需要过多的改造，仅需要新增KM，对这类采集结果做格式解析处理。exporter暴露的数据指标相对统一，处理起来也比较方便。</p>
+<p>缺点：需要额外维护exporter，且需要开通exporter监听端口的访问权限；exporter的定义配置如何通知给网管系统；对于指标的定义、配置，仍然需要沿用原来的方法，即还要开发KM、配置表单，这部分是无法避免的。</p>
+<p>​</p>
+</li>
+<li><p>复用监控系统的采集客户端，同时改造网管系统部分功能。例如telegraf，telegraf支持输出结果到influxdb,或者生成本地json文件。如果是本地Json文件，则与prometheus类似，由KM解析即可。如果是influxdb，则需开发程序从influxdb读取解析数据(相当于另一个数据源)。</p>
+<p>优点：仅仅用到第三方开源系统的采集客户端，抓取我们想要的数据。对原有的网管系统也不需要过多的改造，仅需要新增KM或者influxdb读取程序，对这类采集结果做格式解析处理。telegraf暴露的数据指标相对统一，处理起来也比较方便。</p>
+<p>缺点：需要额外维护telegraf进程；telegraf的定义配置如何通知给网管系统；对于指标的定义、配置，仍然需要沿用原来的方法，即还要KM、配置表单，这部分是无法避免的。</p>
+</li>
+</ol>
+<p><a href="#对比表格">返回目录</a></p>
+<h2 id="支持的采集对象"><a href="#支持的采集对象" class="headerlink" title="支持的采集对象"></a>支持的采集对象</h2><ul>
+<li>Prometheus</li>
+</ul>
+<p><a href="https://prometheus.io/docs/instrumenting/exporters/" target="_blank" rel="external">https://prometheus.io/docs/instrumenting/exporters/</a></p>
+<ul>
+<li>Telegraf</li>
+</ul>
+<p><a href="https://github.com/influxdata/telegraf/tree/master/plugins/inputs" target="_blank" rel="external">https://github.com/influxdata/telegraf/tree/master/plugins/inputs</a></p>
+<p>jmx方式采集：kafka</p>
+<p><a href="https://github.com/influxdata/telegraf/tree/master/plugins/inputs/jolokia2" target="_blank" rel="external">https://github.com/influxdata/telegraf/tree/master/plugins/inputs/jolokia2</a></p>
+<p><a href="https://docs.confluent.io/current/kafka/monitoring.html" target="_blank" rel="external">https://docs.confluent.io/current/kafka/monitoring.html</a></p>
+<ul>
+<li>Sensu</li>
+</ul>
+<p><a href="https://github.com/sensu-plugins" target="_blank" rel="external">https://github.com/sensu-plugins</a></p>
+<ul>
+<li>Openfalcon</li>
+</ul>
+<p><a href="https://book.open-falcon.org/zh_0_2/usage/" target="_blank" rel="external">https://book.open-falcon.org/zh_0_2/usage/</a></p>
+<p><a href="https://github.com/iambocai/falcon-monit-scripts" target="_blank" rel="external">https://github.com/iambocai/falcon-monit-scripts</a></p>
+<ul>
+<li>Datadog </li>
+</ul>
+<p><a href="https://app.datadoghq.com/account/settings#integrations" target="_blank" rel="external">https://app.datadoghq.com/account/settings#integrations</a></p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>采用第二种方案，结合开源组件的客户端和采集脚本，有Agent负责调度，解析结果并返回。</p>
+<p>被监控对象：ES /kakfa</p>
+<p>实现的客户端：telegraf/openfaclon   客户端</p>
+<p>目的：从前台配置开始，最终采集入库</p>
+<p>jolokia2 采集分为两种模式，一种是jvm代理，由java应用（kafka）启动时修改参数引入jolokia2 包<code>-javaagent:/usr/hdp/2.6.1.0-129/kafka/libs/jolokia-jvm-1.5.0-agent.jar=port=8778,host=0.0.0.0</code></p>
+<p>第二种是Proxy模式，由于第一种应用的限制，proxy模式不需要在应用端修改</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixinpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Google</a>
+        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://zhoujinl.github.io/2018/05/16/compared/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/04/27/open-falcon/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Open-falcon 监控体系介绍</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Prometheus、TICK、Sensu、Openfalcon-对比"><span class="toc-number">1.</span> <span class="toc-text">Prometheus、TICK、Sensu、Openfalcon 对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对比表格"><span class="toc-number">2.</span> <span class="toc-text">对比表格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据收集方式"><span class="toc-number">3.</span> <span class="toc-text">数据收集方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据模型"><span class="toc-number">4.</span> <span class="toc-text">数据模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据查询"><span class="toc-number">5.</span> <span class="toc-text">数据查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网管对接"><span class="toc-number">6.</span> <span class="toc-text">网管对接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#支持的采集对象"><span class="toc-number">7.</span> <span class="toc-text">支持的采集对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结论"><span class="toc-number">8.</span> <span class="toc-text">结论</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
 
 
           </div>
@@ -234,8 +561,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
