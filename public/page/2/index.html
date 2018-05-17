@@ -160,6 +160,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python-build" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/19/python-build/">Python编程环境搭建</a>
+    </h1>
+  
+
+        
+        <a href="/2016/08/19/python-build/" class="archive-article-date">
+  	<time datetime="2016-08-19T14:13:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>假如新建了一台CentOs虚拟机，作为纯净的操作系统，我们需要搭建基本的开发环境。CentOs6.x一般都是java1.5版本，python2.6，并且很多开发工具都是没有默认安装的，比如gcc。下面重点介绍Python环境的搭建，主要涉及Python升级，pip安装，virtualenv安装。</p>
+<h1 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h1><p>yum 源更新，可选操作，可替换国内的yum源。<br>yum groupinstall 。必选操作，编译python需要编译工具。还有一些必要的库文件需要安装，例如openssl,zlib,这些都需要额外安装。pip要安装python2.7版本，因此需要zlib需要更新到最新版本1.2.8，而CentOs默认是1.2.3。否则会报错，错误信息后面提示。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@jinqiu opt]# yum -y update</div><div class="line">[root@jinqiu opt]# yum groupinstall &quot;Development tools&quot;</div><div class="line">[root@jinqiu opt]# yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel</div></pre></td></tr></table></figure></p>
+<p>顺便简单提下，快速免验证安装jdk<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1. wget --no-check-certificate --no-cookies --header &quot;Cookie: oraclelicense=accept-securebackup-cookie&quot; http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.rpm  </div><div class="line">2. rpm -ivh jdk-8u131-linux-x64.rpm</div></pre></td></tr></table></figure></p>
+<h1 id="python"><a href="#python" class="headerlink" title="python"></a>python</h1><p>保存2.6版本的python<br>下载2.7版本的python源码文件，解压，然后配置，编译，安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[root@jinqiu~]$ cd /opt</div><div class="line">[root@jinqiuopt]$ sudo wget --no-check-certificate https://www.python.org/ftp/python/2.7.6/Python-2.7.6.tar.xz</div><div class="line">[root@jinqiuopt]$ sudo tar xf Python-2.7.6.tar.xz </div><div class="line">[root@jinqiuopt]$ cd Python-2.7.6</div><div class="line">[root@jinqiuPython-2.7.6]$ sudo ./configure --prefix=/usr/local</div><div class="line">[root@jinqiuPython-2.7.6]$ sudo make &amp;&amp; sudo make altinstall</div></pre></td></tr></table></figure></p>
+        
+          <a class="article-more-a" href="/2016/08/19/python-build/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/08/19/python-build/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-joel-on-software-1-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -240,19 +330,19 @@
 
 
   
-    <article id="post-google-full" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Google-Full" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/19/google-full/">Google 使用技巧</a>
+      <a class="article-title" href="/2015/08/19/Google-Full/">Google 使用技巧</a>
     </h1>
   
 
         
-        <a href="/2015/08/19/google-full/" class="archive-article-date">
+        <a href="/2015/08/19/Google-Full/" class="archive-article-date">
   	<time datetime="2015-08-19T14:53:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-19</time>
 </a>
         
@@ -269,7 +359,7 @@
 <p>炭黑+銀色金屬</p>
 </blockquote>
         
-          <a class="article-more-a" href="/2015/08/19/google-full/#more">more >></a>
+          <a class="article-more-a" href="/2015/08/19/Google-Full/#more">more >></a>
         
       
 
@@ -293,7 +383,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2015/08/19/google-full/">展开全文 >></a>
+          <a class="article-more-a" href="/2015/08/19/Google-Full/">展开全文 >></a>
         </p>
       
 
@@ -1037,6 +1127,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Google</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Elasticsearch</a>
               </li>
              
@@ -1050,10 +1144,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Google</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1081,14 +1171,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sensu</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Ruby</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">TICK</a>
               </li>
              
@@ -1098,6 +1180,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Telegraf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Sensu</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Ruby</a>
               </li>
              
               <li class="article-tag-list-item">

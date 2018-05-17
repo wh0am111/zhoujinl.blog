@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://zhoujinl.github.io/2018/05/16/compared/index.html">
 <meta property="og:site_name" content="Jalon&#39;Blog">
 <meta property="og:description" content="Prometheus、TICK、Sensu、Openfalcon 对比目的  研究开源监控系统架构，完善现有的后台采集结构 利用开源监控体系中的采集插件，节省KM研究、开发新监控对象（各类分布式组件）的时间 使用开源监控系统为独立的一套监控系统，作为端到端等分布式应用场景的监控系统 与现有网管后台结合，将开源监控系统作为一类采集数据源   OpenTSDB、Graphite 偏向数据存储，并无完整">
-<meta property="og:updated_time" content="2018-05-16T15:16:45.792Z">
+<meta property="og:updated_time" content="2018-05-17T12:39:11.808Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开源监控体系对比">
 <meta name="twitter:description" content="Prometheus、TICK、Sensu、Openfalcon 对比目的  研究开源监控系统架构，完善现有的后台采集结构 利用开源监控体系中的采集插件，节省KM研究、开发新监控对象（各类分布式组件）的时间 使用开源监控系统为独立的一套监控系统，作为端到端等分布式应用场景的监控系统 与现有网管后台结合，将开源监控系统作为一类采集数据源   OpenTSDB、Graphite 偏向数据存储，并无完整">
@@ -255,12 +255,6 @@
 <td style="text-align:center">HTTP API/redis-cli</td>
 <td style="text-align:center">sql</td>
 </tr>
-<tr>
-<td style="text-align:center">支持的采集对象</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
 </tbody>
 </table>
 <a id="more"></a>
@@ -333,15 +327,15 @@
 <li><p>跟云资源采集类似，将上述监控系统作为一个数据采集中心。开发一个转储接口程序，从监控系统中（数据库或者REST API）读取配置、性能数据等，转换数据格式，存入网管系统。</p>
 <p>优点：可以方便对接第三方开源系统，利用其成熟的监控指标和稳定的监控体系。对原有的网管系统也不需要过多的改造，相当于改造重心在转储接口程序。</p>
 <p>​ 缺点：需要额外维护多套监控系统以及对应的转换程序；对该转换程序尽可能做得通用，因为可以同时对接多套监控系统；对于指标的定义、配置，仍然需要沿用原来的方法，即还要开发KM、配置表单，这部分是无法避免的。</p>
-<p>​</p>
 </li>
 </ol>
 <ol>
 <li><p>仅复用监控系统的采集客户端，类似现在的Agent对接开源组件的模式。例如prometheus，可以复用其exporter。即prometheus exporter独立运行并暴露数据至指定监听端口，Agent开发http接口定时扫描读取该端口暴露的指标即可，然后由KM负责解析转换，最终存入网管系统。</p>
 <p>优点：仅仅用到第三方开源系统的采集客户端，抓取我们想要的数据。对原有的网管系统也不需要过多的改造，仅需要新增KM，对这类采集结果做格式解析处理。exporter暴露的数据指标相对统一，处理起来也比较方便。</p>
 <p>缺点：需要额外维护exporter，且需要开通exporter监听端口的访问权限；exporter的定义配置如何通知给网管系统；对于指标的定义、配置，仍然需要沿用原来的方法，即还要开发KM、配置表单，这部分是无法避免的。</p>
-<p>​</p>
 </li>
+</ol>
+<ol>
 <li><p>复用监控系统的采集客户端，同时改造网管系统部分功能。例如telegraf，telegraf支持输出结果到influxdb,或者生成本地json文件。如果是本地Json文件，则与prometheus类似，由KM解析即可。如果是influxdb，则需开发程序从influxdb读取解析数据(相当于另一个数据源)。</p>
 <p>优点：仅仅用到第三方开源系统的采集客户端，抓取我们想要的数据。对原有的网管系统也不需要过多的改造，仅需要新增KM或者influxdb读取程序，对这类采集结果做格式解析处理。telegraf暴露的数据指标相对统一，处理起来也比较方便。</p>
 <p>缺点：需要额外维护telegraf进程；telegraf的定义配置如何通知给网管系统；对于指标的定义、配置，仍然需要沿用原来的方法，即还要KM、配置表单，这部分是无法避免的。</p>
@@ -492,6 +486,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2018/05/17/phoenix/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          凤凰项目-一个IT运维的传奇故事
+        
+      </div>
+    </a>
+  
   
     <a href="/2018/04/27/open-falcon/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Open-falcon 监控体系介绍</div>
@@ -635,6 +638,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Google</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Elasticsearch</a>
               </li>
              
@@ -648,10 +655,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Google</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -679,14 +682,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sensu</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Ruby</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">TICK</a>
               </li>
              
@@ -696,6 +691,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Telegraf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Sensu</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Ruby</a>
               </li>
              
               <li class="article-tag-list-item">
