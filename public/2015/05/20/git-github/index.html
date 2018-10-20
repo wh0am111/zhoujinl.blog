@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://zhoujinl.github.io">
   <title>Git/Github | Jalon&#39;Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://zhoujinl.github.io/2015/05/20/git-github/index.html">
 <meta property="og:site_name" content="Jalon&#39;Blog">
 <meta property="og:description" content="Git win7+在wind7下搭建git环境。需下载windows 版本的git工具。见附件。选择完整安装。安装目录 D:\Program Files (x86)\Git\并将该路径添加至PATH环境。之后在cmd 环境下就可以使用了。后续如何使用git 就参考git 使用手册了，跟linux环境下的使用方法类似。在windows 下生成id_rsa ，免密码连接github。使用 进入D:\P">
+<meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2018-04-27T04:11:03.341Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git&#x2F;Github">
@@ -37,7 +38,7 @@
   
 
 </head>
-
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -160,7 +161,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-git-github" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-git-github" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -206,7 +207,7 @@
 <ol>
 <li>处于add之后，未commit之前<br>git reset HAED <file>  </file></li>
 <li>commit之后，还未push之前  <blockquote>
-<p>a.先看日志 git log ,找到要回退之前的版本的commit-id<br>λ git log<br>commit 992de5dde4f29aa35eb642b8fd55089838572c2d   ###此次错误提交的版本<br>Author: zhoujl <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x7a;&#104;&#111;&#x75;&#x6a;&#x6c;&#64;&#x66;&#x66;&#99;&#115;&#x2e;&#99;&#x6e;">&#x7a;&#104;&#111;&#x75;&#x6a;&#x6c;&#64;&#x66;&#x66;&#99;&#115;&#x2e;&#99;&#x6e;</a><br>Date:   Wed Aug 9 16:40:59 2017 +0800<br>Local change<br>commit 931c4a4e7678b760faa6849e16c849d7c679ac9c       ##上一个版本，应该使用该id<br>Author: arganzheng <a href="&#109;&#x61;&#x69;&#x6c;&#116;&#x6f;&#58;&#97;&#114;&#103;&#x61;&#x6e;&#x7a;&#104;&#x65;&#110;&#x67;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;">&#97;&#114;&#103;&#x61;&#x6e;&#x7a;&#104;&#x65;&#110;&#x67;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a><br>Date:   Thu Jun 18 20:21:51 2015 +0800<br>small modify<br>b.执行撤销操作<br><code>git reset --hard 931c4a4e7678b760faa6849e16c849d7c679ac9c</code><br><strong>注意：</strong>工 作区和暂存区的内容都会被重置到指定提交的时候，如果不加–hard则只移动HEAD的指针，不影响工作区和暂存区的内容。</p>
+<p>a.先看日志 git log ,找到要回退之前的版本的commit-id<br>λ git log<br>commit 992de5dde4f29aa35eb642b8fd55089838572c2d   ###此次错误提交的版本<br>Author: zhoujl <a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#111;&#58;&#122;&#x68;&#x6f;&#x75;&#x6a;&#x6c;&#64;&#102;&#102;&#x63;&#115;&#x2e;&#x63;&#x6e;">&#122;&#x68;&#x6f;&#x75;&#x6a;&#x6c;&#64;&#102;&#102;&#x63;&#115;&#x2e;&#x63;&#x6e;</a><br>Date:   Wed Aug 9 16:40:59 2017 +0800<br>Local change<br>commit 931c4a4e7678b760faa6849e16c849d7c679ac9c       ##上一个版本，应该使用该id<br>Author: arganzheng <a href="&#x6d;&#x61;&#105;&#108;&#x74;&#111;&#x3a;&#97;&#x72;&#x67;&#97;&#x6e;&#122;&#x68;&#x65;&#110;&#x67;&#x40;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#97;&#x72;&#x67;&#97;&#x6e;&#122;&#x68;&#x65;&#110;&#x67;&#x40;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;</a><br>Date:   Thu Jun 18 20:21:51 2015 +0800<br>small modify<br>b.执行撤销操作<br><code>git reset --hard 931c4a4e7678b760faa6849e16c849d7c679ac9c</code><br><strong>注意：</strong>工 作区和暂存区的内容都会被重置到指定提交的时候，如果不加–hard则只移动HEAD的指针，不影响工作区和暂存区的内容。</p>
 </blockquote>
 </li>
 <li>push之后，如何回退：–待确认<br> 在步骤2的基础上，执行   git push origin HEAD –force</li>
@@ -532,6 +533,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">TICK</a>
               </li>
              
@@ -541,10 +546,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Telegraf</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -558,13 +559,25 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Docker Swarm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">HA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Service</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:

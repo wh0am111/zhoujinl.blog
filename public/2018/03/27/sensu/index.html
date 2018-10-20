@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://zhoujinl.github.io">
   <title>Sensu 监控体系介绍 | Jalon&#39;Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -15,11 +15,12 @@
 <meta property="og:url" content="http://zhoujinl.github.io/2018/03/27/sensu/index.html">
 <meta property="og:site_name" content="Jalon&#39;Blog">
 <meta property="og:description" content="1.Sensu 安装部署主要特性首页介绍 Sensu was designed to provide a comprehensive monitoring platform for monitoring infrastructure (servers), services, application health, and business KPIs — and to collect and ana">
+<meta property="og:locale" content="default">
 <meta property="og:image" content="http://zhoujinl.github.io/img/sensu组成部分.png">
 <meta property="og:image" content="http://zhoujinl.github.io/img/sensu-support-platforms.png">
 <meta property="og:image" content="http://zhoujinl.github.io/img/uchiwa.png">
 <meta property="og:image" content="http://zhoujinl.github.io/img/check-error-event.png">
-<meta property="og:updated_time" content="2018-04-27T05:02:06.550Z">
+<meta property="og:updated_time" content="2018-10-20T08:15:43.515Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sensu 监控体系介绍">
 <meta name="twitter:description" content="1.Sensu 安装部署主要特性首页介绍 Sensu was designed to provide a comprehensive monitoring platform for monitoring infrastructure (servers), services, application health, and business KPIs — and to collect and ana">
@@ -42,7 +43,7 @@
   
 
 </head>
-
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -165,7 +166,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-sensu" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-sensu" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -185,7 +186,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-Sensu-安装部署"><a href="#1-Sensu-安装部署" class="headerlink" title="1.Sensu 安装部署"></a>1.Sensu 安装部署</h2><h3 id="主要特性"><a href="#主要特性" class="headerlink" title="主要特性"></a>主要特性</h3><p><a href="https://sensuapp.org/docs/1.2/overview/what-is-sensu.html" target="_blank" rel="external">首页介绍</a></p>
+        <h2 id="1-Sensu-安装部署"><a href="#1-Sensu-安装部署" class="headerlink" title="1.Sensu 安装部署"></a>1.Sensu 安装部署</h2><h3 id="主要特性"><a href="#主要特性" class="headerlink" title="主要特性"></a>主要特性</h3><p><a href="https://sensuapp.org/docs/1.2/overview/what-is-sensu.html" target="_blank" rel="noopener">首页介绍</a></p>
 <p>Sensu was designed to provide a comprehensive monitoring platform for monitoring infrastructure (servers), services, application health, and business KPIs — and to collect and analyze custom metrics. </p>
 <p>主要包含以下功能与特性：</p>
 <ul>
@@ -199,69 +200,69 @@
 <li>加密的安全通信，支持各种复杂的网络拓扑。</li>
 </ul>
 <p>包括有类似我们拨测的功能，可对服务可用性进行检查，例如指定页面进行访问。</p>
-<p>结合其他软件：Sensu 从监控节点获取数据，将数据格式化成 Graphite 要求的格式，然后通过调用 Graphite 的接口将数据发给 Graphite。Graphite 将数据存储在时序数据中供 Grafana 绘图使用。最终用户通过在 Grafana 中<a href="http://www.liuhaihua.cn/archives/tag/private" target="_blank" rel="external">定制</a>需要显示的数据及显示的方式，获得最终的可视化图表。</p>
+<p>结合其他软件：Sensu 从监控节点获取数据，将数据格式化成 Graphite 要求的格式，然后通过调用 Graphite 的接口将数据发给 Graphite。Graphite 将数据存储在时序数据中供 Grafana 绘图使用。最终用户通过在 Grafana 中<a href="http://www.liuhaihua.cn/archives/tag/private" target="_blank" rel="noopener">定制</a>需要显示的数据及显示的方式，获得最终的可视化图表。</p>
 <hr>
 <h3 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h3><p>Sensu 由服务器、客户端、RabbitMQ、Redis 和 API 这五个部分构成。图 1 展示了这些组件之间的关系以及通信的数据流。如图所示，RabbitMQ 用于组件之间的通信，Redis 用于持久化 Sensu 服务器和 Sensu API 的数据。因为客户端都是通过文件进行配置，并且不需要在服务器端配置客户端的信息，所以可以很轻易的增加和减少客户端的数量。由于 Sensu 的服务器和 API 原生支持多节点部署，所以不存在效率的瓶颈问题。从图中可以看到，为了解耦服务器和客户端，通信都是通过 RabbitMQ 进行的。</p>
 <p><img src="/img/sensu组成部分.png" alt="组成部分"></p>
-<p>核心代码由Ruby编写。<a href="https://github.com/sensu/sensu" target="_blank" rel="external">Github地址</a></p>
+<p>核心代码由Ruby编写。<a href="https://github.com/sensu/sensu" target="_blank" rel="noopener">Github地址</a></p>
 <p>实际安装中，不一定要使用RabbitMq作为消息中间件。直接使用redis即可。以下安装使用redis。</p>
 <a id="more"></a>
 <h3 id="安装部署"><a href="#安装部署" class="headerlink" title="安装部署"></a>安装部署</h3><p>server/clent 支持平台有</p>
 <p><img src="/img/sensu-support-platforms.png" alt="支持平台"></p>
 <p>Server安装部署：</p>
 <p>安装配置yum源 /etc/yum.repos.d/sensu.repo</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[sensu]</div><div class="line">name=sensu</div><div class="line">baseurl=https://sensu.global.ssl.fastly.net/yum/$releasever/$basearch/</div><div class="line">gpgcheck=0</div><div class="line">enabled=1</div></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum install redis -y</div><div class="line">yum install sensu -y</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[sensu]</span><br><span class="line">name=sensu</span><br><span class="line">baseurl=https://sensu.global.ssl.fastly.net/yum/$releasever/$basearch/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install redis -y</span><br><span class="line">yum install sensu -y</span><br></pre></td></tr></table></figure>
 <p>sensu server 配置 /etc/sensu/config.json</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;transport&quot;: &#123;</div><div class="line">    &quot;name&quot;: &quot;redis&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;api&quot;: &#123;</div><div class="line">    &quot;host&quot;: &quot;127.0.0.1&quot;,</div><div class="line">    &quot;port&quot;: 4567</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;transport&quot;: &#123;</span><br><span class="line">    &quot;name&quot;: &quot;redis&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;api&quot;: &#123;</span><br><span class="line">    &quot;host&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">    &quot;port&quot;: 4567</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>sensu client/server配置transport.redis</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  "redis":</div><div class="line">    &#123;</div><div class="line">       "host": "127.0.0.1",</div><div class="line">       "port": 6379</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "redis":</span><br><span class="line">    &#123;</span><br><span class="line">       "host": "127.0.0.1",</span><br><span class="line">       "port": 6379</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>sensu client 配置 /etc/sensu/conf.d/client.json</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;client&quot;: &#123;</div><div class="line">    &quot;name&quot;: &quot;rhel-client&quot;,</div><div class="line">    &quot;address&quot;: &quot;127.0.0.1&quot;,</div><div class="line">    &quot;environment&quot;: &quot;development&quot;,</div><div class="line">    &quot;subscriptions&quot;: [</div><div class="line">      &quot;dev&quot;,</div><div class="line">      &quot;rhel-hosts&quot;</div><div class="line">    ],</div><div class="line">    &quot;socket&quot;: &#123;</div><div class="line">      &quot;bind&quot;: &quot;127.0.0.1&quot;,</div><div class="line">      &quot;port&quot;: 3030</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">｝</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;client&quot;: &#123;</span><br><span class="line">    &quot;name&quot;: &quot;rhel-client&quot;,</span><br><span class="line">    &quot;address&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">    &quot;environment&quot;: &quot;development&quot;,</span><br><span class="line">    &quot;subscriptions&quot;: [</span><br><span class="line">      &quot;dev&quot;,</span><br><span class="line">      &quot;rhel-hosts&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;socket&quot;: &#123;</span><br><span class="line">      &quot;bind&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">      &quot;port&quot;: 3030</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
 <p>sensu dashboard配置 /etc/sensu/dashboard.json</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;sensu&quot;: [</div><div class="line">    &#123;</div><div class="line">      &quot;name&quot;: &quot;sensu&quot;,</div><div class="line">      &quot;host&quot;: &quot;127.0.0.1&quot;,</div><div class="line">      &quot;port&quot;: 4567</div><div class="line">    &#125;</div><div class="line">  ],</div><div class="line">  &quot;dashboard&quot;: &#123;</div><div class="line">    &quot;host&quot;: &quot;0.0.0.0&quot;,</div><div class="line">    &quot;port&quot;: 3000</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;sensu&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;name&quot;: &quot;sensu&quot;,</span><br><span class="line">      &quot;host&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">      &quot;port&quot;: 4567</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;dashboard&quot;: &#123;</span><br><span class="line">    &quot;host&quot;: &quot;0.0.0.0&quot;,</span><br><span class="line">    &quot;port&quot;: 3000</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>启动进程</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl enable sensu-&#123;server,api,client&#125; </div><div class="line">systemctl start sensu-&#123;server,api,client&#125;</div><div class="line">systemctl restart sensu-&#123;server,api,client&#125;</div></pre></td></tr></table></figure>
-<p>uchiwa 图形展示界面，需要额外安装。sensu提供了两个版本的展示界面，一个是企业版，一个就是uchiwa 。这里使用uchiwa，<a href="https://uchiwa.io/#/download" target="_blank" rel="external">下载链接</a>。 下载完成后，使用yum命令安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">yum -y localinstall uchiwa-1.1.1-1.x86_64.rpm</div><div class="line">systemctl enable uchiwa</div><div class="line">systemctl start uchiwa</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable sensu-&#123;server,api,client&#125; </span><br><span class="line">systemctl start sensu-&#123;server,api,client&#125;</span><br><span class="line">systemctl restart sensu-&#123;server,api,client&#125;</span><br></pre></td></tr></table></figure>
+<p>uchiwa 图形展示界面，需要额外安装。sensu提供了两个版本的展示界面，一个是企业版，一个就是uchiwa 。这里使用uchiwa，<a href="https://uchiwa.io/#/download" target="_blank" rel="noopener">下载链接</a>。 下载完成后，使用yum命令安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum -y localinstall uchiwa-1.1.1-1.x86_64.rpm</span><br><span class="line">systemctl enable uchiwa</span><br><span class="line">systemctl start uchiwa</span><br></pre></td></tr></table></figure>
 <p>配置好 uchiwa  /etc/sensu/uchiwa.json</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  "sensu": [</div><div class="line">    &#123;</div><div class="line">      "name": "Sensu-Server-1",</div><div class="line">      "host": "127.0.0.1",</div><div class="line">      "port": 4567,</div><div class="line">      "timeout": 10</div><div class="line">    &#125;</div><div class="line">  ],</div><div class="line">  "uchiwa": &#123;</div><div class="line">    "host": "0.0.0.0",</div><div class="line">    "port": 3000,</div><div class="line">    "refresh": 10</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><a href="http://192.168.14.165:3000" target="_blank" rel="external">URL</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "sensu": [</span><br><span class="line">    &#123;</span><br><span class="line">      "name": "Sensu-Server-1",</span><br><span class="line">      "host": "127.0.0.1",</span><br><span class="line">      "port": 4567,</span><br><span class="line">      "timeout": 10</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  "uchiwa": &#123;</span><br><span class="line">    "host": "0.0.0.0",</span><br><span class="line">    "port": 3000,</span><br><span class="line">    "refresh": 10</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="http://192.168.14.165:3000" target="_blank" rel="noopener">URL</a></p>
 <p><img src="/img/uchiwa.png" alt="图例"></p>
 <p>uchiwa 只是简单的展示功能，并不能对client等进行增删操作，即相当于对Sensu-API 只实现了Get相关的功能</p>
-<p><a href="https://sensuapp.org/docs/1.2/api/overview.html" target="_blank" rel="external">HTTP API用例</a></p>
+<p><a href="https://sensuapp.org/docs/1.2/api/overview.html" target="_blank" rel="noopener">HTTP API用例</a></p>
 <h3 id="部署过程中遇到的问题"><a href="#部署过程中遇到的问题" class="headerlink" title="部署过程中遇到的问题"></a>部署过程中遇到的问题</h3><ul>
 <li>uchiwa无法展示client和server，大部分都是json配置文件没有配置清楚导致。可查看日志/var/log/uchiwa，/var/log/sensu/sensu-client.log</li>
 </ul>
 <h2 id="2-Sensu-使用"><a href="#2-Sensu-使用" class="headerlink" title="2.Sensu 使用"></a>2.Sensu 使用</h2><h3 id="Sensu-Client"><a href="#Sensu-Client" class="headerlink" title="Sensu Client"></a>Sensu Client</h3><p>Sensu Client 就是采集客户端agent。</p>
-<p><a href="https://blog.csdn.net/houzhe_adore/article/details/48518825" target="_blank" rel="external">介绍博文</a></p>
+<p><a href="https://blog.csdn.net/houzhe_adore/article/details/48518825" target="_blank" rel="noopener">介绍博文</a></p>
 <h3 id="Proxy-Clients"><a href="#Proxy-Clients" class="headerlink" title="Proxy Clients"></a>Proxy Clients</h3><h3 id="Sensu-Check"><a href="#Sensu-Check" class="headerlink" title="Sensu Check"></a>Sensu Check</h3><p>Sensu checks allow you to monitor server resources, services, and application health, as well as collect &amp; analyze metrics; they are executed on servers running the Sensu client. Sensu checks allow you to monitor server resources, services, and application health, as well as collect &amp; analyze metrics; they are executed on servers running the Sensu client. </p>
 <p>首先安装check插件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sensu-install -p process-checks	</div><div class="line">sensu-install -p cpu-checks</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sensu-install -p process-checks	</span><br><span class="line">sensu-install -p cpu-checks</span><br></pre></td></tr></table></figure>
 <p>插件是ruby脚本，安装后会在/opt/sensu/embedded/bin/ 路径下下载安装rubu解释器和check插件。process-checks 是进程检测插件，cpu-checks 是cpu检测指标插件。</p>
-<p><a href="https://github.com/sensu-plugins/sensu-plugins-process-checks" target="_blank" rel="external">github插件脚本</a></p>
+<p><a href="https://github.com/sensu-plugins/sensu-plugins-process-checks" target="_blank" rel="noopener">github插件脚本</a></p>
 <p>配置check 服务端路径 /etc/sensu/conf.d/</p>
 <p>检查sensu进程个数 check_cron.json</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  "checks": &#123;</div><div class="line">    "cron": &#123;</div><div class="line">      "command": "check-process.rb -p cron",</div><div class="line">      "standalone": true,</div><div class="line">      "subscribers": [</div><div class="line">        "production"</div><div class="line">      ],</div><div class="line">      "interval": 60</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "checks": &#123;</span><br><span class="line">    "cron": &#123;</span><br><span class="line">      "command": "check-process.rb -p cron",</span><br><span class="line">      "standalone": true,</span><br><span class="line">      "subscribers": [</span><br><span class="line">        "production"</span><br><span class="line">      ],</span><br><span class="line">      "interval": 60</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>收集cpu指标 metrics_cpu.json</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;checks&quot;: &#123;</div><div class="line">    &quot;cpu_metrics&quot;: &#123;</div><div class="line">      &quot;type&quot;: &quot;metric&quot;,</div><div class="line">      &quot;command&quot;: &quot;metrics-cpu.rb&quot;,</div><div class="line">      &quot;subscribers&quot;: [</div><div class="line">        &quot;production&quot;</div><div class="line">      ],</div><div class="line">      &quot;interval&quot;: 10,</div><div class="line">      &quot;handler&quot;: &quot;tcp_socket&quot;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;checks&quot;: &#123;</span><br><span class="line">    &quot;cpu_metrics&quot;: &#123;</span><br><span class="line">      &quot;type&quot;: &quot;metric&quot;,</span><br><span class="line">      &quot;command&quot;: &quot;metrics-cpu.rb&quot;,</span><br><span class="line">      &quot;subscribers&quot;: [</span><br><span class="line">        &quot;production&quot;</span><br><span class="line">      ],</span><br><span class="line">      &quot;interval&quot;: 10,</span><br><span class="line">      &quot;handler&quot;: &quot;tcp_socket&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其中 “standalone”: true 表示允许client 单独调度运行，不需要server 调度。”type”: “metric” 表明这是指标类型的采集。</p>
-<p>在/var/log/sensu/sensu-client.log 、sensu-server.log、HTTP API 可以看到执行结果。后续可再对结果进行处理，需借助另外的插件<a href="https://github.com/sensu-plugins/sensu-plugins-graphite" target="_blank" rel="external"><strong>sensu-plugins-graphite</strong></a> . </p>
+<p>在/var/log/sensu/sensu-client.log 、sensu-server.log、HTTP API 可以看到执行结果。后续可再对结果进行处理，需借助另外的插件<a href="https://github.com/sensu-plugins/sensu-plugins-graphite" target="_blank" rel="noopener"><strong>sensu-plugins-graphite</strong></a> . </p>
 <p><em>采集一个指标展示，真累。。。</em></p>
 <p>接着通过redis查看cpu指标数据</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">redis-cli</div><div class="line">keys * </div><div class="line">get result:tick-client:cpu_metrics</div><div class="line">"&#123;\"type\":\"metric\",\"command\":\"metrics-cpu.rb\",\"subscribers\":[\"production\"],\"interval\":10,\"handler\":\"tcp_socket\",\"standalone\":true,\"name\":\"cpu_metrics\",\"issued\":1524824239,\"executed\":1524824239,\"duration\":0.073,\"output\":\"tick.cpu.total.user 8057 1524824240\\n...\",\"status\":0&#125;"</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line">keys * </span><br><span class="line">get result:tick-client:cpu_metrics</span><br><span class="line">"&#123;\"type\":\"metric\",\"command\":\"metrics-cpu.rb\",\"subscribers\":[\"production\"],\"interval\":10,\"handler\":\"tcp_socket\",\"standalone\":true,\"name\":\"cpu_metrics\",\"issued\":1524824239,\"executed\":1524824239,\"duration\":0.073,\"output\":\"tick.cpu.total.user 8057 1524824240\\n...\",\"status\":0&#125;"</span><br></pre></td></tr></table></figure>
 <p>也可以直接到脚本安装路径，运行ruby脚本，直接看看采集结果</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@tick bin]# /opt/sensu/embedded/bin/ruby  check-cpu.rb</div><div class="line">CheckCPU TOTAL OK: total=0.25 user=0.0 nice=0.0 system=0.25 idle=99.75 iowait=0.0 irq=0.0 softirq=0.0 steal=0.0 guest=0.0 guest_nice=0.0</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@tick bin]# /opt/sensu/embedded/bin/ruby  check-cpu.rb</span><br><span class="line">CheckCPU TOTAL OK: total=0.25 user=0.0 nice=0.0 system=0.25 idle=99.75 iowait=0.0 irq=0.0 softirq=0.0 steal=0.0 guest=0.0 guest_nice=0.0</span><br></pre></td></tr></table></figure>
 <h3 id="Sensu-data-output"><a href="#Sensu-data-output" class="headerlink" title="Sensu data output"></a>Sensu data output</h3><p>Metric collection checks are used to collect measurements from server resources, services, and applications. Metric collection checks can output metric data in a variety of metric formats:</p>
 <ul>
-<li><a href="http://graphite.readthedocs.org/en/latest/feeding-carbon.html#the-plaintext-protocol" target="_blank" rel="external">Graphite plaintext</a></li>
-<li><a href="http://nagios.sourceforge.net/docs/3_0/perfdata.html" target="_blank" rel="external">Nagios Performance Data</a></li>
-<li><a href="http://opentsdb.net/docs/build/html/user_guide/writing.html" target="_blank" rel="external">OpenTSDB</a></li>
-<li><a href="http://metrics20.org/spec/" target="_blank" rel="external">Metrics 2.0 wire format</a></li>
+<li><a href="http://graphite.readthedocs.org/en/latest/feeding-carbon.html#the-plaintext-protocol" target="_blank" rel="noopener">Graphite plaintext</a></li>
+<li><a href="http://nagios.sourceforge.net/docs/3_0/perfdata.html" target="_blank" rel="noopener">Nagios Performance Data</a></li>
+<li><a href="http://opentsdb.net/docs/build/html/user_guide/writing.html" target="_blank" rel="noopener">OpenTSDB</a></li>
+<li><a href="http://metrics20.org/spec/" target="_blank" rel="noopener">Metrics 2.0 wire format</a></li>
 </ul>
 <p>The output produced by the check <code>command</code> ，貌似不同的插件返回不同的结果集。</p>
-<h3 id="Sensu-event-processor"><a href="#Sensu-event-processor" class="headerlink" title="Sensu event processor"></a>Sensu event processor</h3><p>The Sensu server provides a scalable event processor. Event processing involves conversion of <a href="https://sensuapp.org/docs/latest/reference/checks.html#check-results" target="_blank" rel="external">check results</a> into Sensu events, and then applying any defined <a href="https://sensuapp.org/docs/latest/reference/filters.html" target="_blank" rel="external">event filters</a>, <a href="https://sensuapp.org/docs/latest/reference/mutators.html" target="_blank" rel="external">event data mutators</a>, and <a href="https://sensuapp.org/docs/latest/reference/handlers.html" target="_blank" rel="external">event handlers</a>. All event processing happens on a Sensu server system.</p>
-<h3 id="Sensu-event-handlers"><a href="#Sensu-event-handlers" class="headerlink" title="Sensu event handlers"></a>Sensu event handlers</h3><p>Sensu event handlers are for taking action on <a href="https://sensuapp.org/docs/latest/reference/events.html" target="_blank" rel="external">events</a> (produced by check results), such as sending an email alert, creating or resolving a PagerDuty incident, or storing metrics in Graphite. There are several types of handlers: <code>pipe</code>, <code>tcp</code>, <code>udp</code>, <code>transport</code>, and <code>set</code>.</p>
+<h3 id="Sensu-event-processor"><a href="#Sensu-event-processor" class="headerlink" title="Sensu event processor"></a>Sensu event processor</h3><p>The Sensu server provides a scalable event processor. Event processing involves conversion of <a href="https://sensuapp.org/docs/latest/reference/checks.html#check-results" target="_blank" rel="noopener">check results</a> into Sensu events, and then applying any defined <a href="https://sensuapp.org/docs/latest/reference/filters.html" target="_blank" rel="noopener">event filters</a>, <a href="https://sensuapp.org/docs/latest/reference/mutators.html" target="_blank" rel="noopener">event data mutators</a>, and <a href="https://sensuapp.org/docs/latest/reference/handlers.html" target="_blank" rel="noopener">event handlers</a>. All event processing happens on a Sensu server system.</p>
+<h3 id="Sensu-event-handlers"><a href="#Sensu-event-handlers" class="headerlink" title="Sensu event handlers"></a>Sensu event handlers</h3><p>Sensu event handlers are for taking action on <a href="https://sensuapp.org/docs/latest/reference/events.html" target="_blank" rel="noopener">events</a> (produced by check results), such as sending an email alert, creating or resolving a PagerDuty incident, or storing metrics in Graphite. There are several types of handlers: <code>pipe</code>, <code>tcp</code>, <code>udp</code>, <code>transport</code>, and <code>set</code>.</p>
 <ul>
 <li><strong>Pipe handlers</strong> execute a command and pass the event data to the created process via <code>STDIN</code>.</li>
 <li><strong>TCP and UDP handlers</strong> send the event data to a remote socket.</li>
@@ -270,13 +271,13 @@
 </ul>
 <p>类似于告警。</p>
 <p>这里使用TCP handlers 作为验证，需安装nc 命令。开启两个终端，分别运行以下命令，一个是作为server端，监听6000端口，一个是客户端，往监听端口发送数据。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">nc -l -k -4 -p 6000      </div><div class="line">echo "testing" | nc localhost 6000</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -l -k -4 -p 6000      </span><br><span class="line">echo "testing" | nc localhost 6000</span><br></pre></td></tr></table></figure>
 <p>新建TCP 配置文件 /etc/sensu/conf.d/tcp_socket.json</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"handlers"</span>: &#123;</div><div class="line">    <span class="string">"tcp_socket"</span>: &#123;</div><div class="line">      <span class="string">"type"</span>: <span class="string">"tcp"</span>,</div><div class="line">      <span class="string">"socket"</span>: &#123;</div><div class="line">        <span class="string">"host"</span>: <span class="string">"localhost"</span>,</div><div class="line">        <span class="string">"port"</span>: 6000</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"handlers"</span>: &#123;</span><br><span class="line">    <span class="string">"tcp_socket"</span>: &#123;</span><br><span class="line">      <span class="string">"type"</span>: <span class="string">"tcp"</span>,</span><br><span class="line">      <span class="string">"socket"</span>: &#123;</span><br><span class="line">        <span class="string">"host"</span>: <span class="string">"localhost"</span>,</span><br><span class="line">        <span class="string">"port"</span>: 6000</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注意，需修改对应的check 配置，把handler 修改为 <em>tcp_socket</em>  </p>
 <p>例如，cron 进程检测的异常情况，即进程不存在<img src="/img/check-error-event.png" alt="Check Error Event"></p>
 <h3 id="Sensu-API"><a href="#Sensu-API" class="headerlink" title="Sensu API"></a>Sensu API</h3><p>常用的API </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">curl -s http://127.0.0.1:4567/clients | jq .</div><div class="line">curl -s http://localhost:4567/events | jq .</div><div class="line">curl -s http://localhost:4567/results | jq .</div><div class="line">curl -s http://localhost:4567/client | jq .</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -s http://127.0.0.1:4567/clients | jq .</span><br><span class="line">curl -s http://localhost:4567/events | jq .</span><br><span class="line">curl -s http://localhost:4567/results | jq .</span><br><span class="line">curl -s http://localhost:4567/client | jq .</span><br></pre></td></tr></table></figure>
 <h2 id="3-关注事项"><a href="#3-关注事项" class="headerlink" title="3.关注事项"></a>3.关注事项</h2><ol>
 <li><p>数据收集方式（Pull、Push）   </p>
 <p>默认都是Push，由Client发送采集数据到transport，服务端再去transport 读取数据。</p>
@@ -618,6 +619,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">TICK</a>
               </li>
              
@@ -627,10 +632,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Telegraf</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -644,13 +645,25 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Docker Swarm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">HA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Service</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:
